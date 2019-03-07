@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+// common style
+
+// 페이지 탑
+.page-top {
+  z-index: $z-page-header;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 16.8rem;
+
+  .search-container {
+    padding: 0 1rem;
+  }
+}
+
+// 페이지 헤더
+.page-header {
+  position: relative;
+  width: 100%;
+  height: 4.4rem;
+  text-align: center;
+  line-height: 4.2rem;
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+
+    img {
+      display: block;
+      width: 11.7rem;
+      height: 2rem;
+    }
+  }
+
+  .page-header-left {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    @include transform(translateY(-50%));
+  }
+
+  .page-header-right {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    @include transform(translateY(-50%));
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+    font-weight: $fw-m;
+    color: #0c0c0c;
+  }
+}
+
+// 페이지 바디
+.page-body {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>go survey</title>
+
+  <link type="text/css" rel="stylesheet" href="../css/style.css" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <meta name="format-detection" content="telephone=no, address=no, email=no" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="../js/test.js"></script>
+  <!--
+    [전달사항]
+    이벤트 확인용 js입니다.
+  -->
+</head>
+
+<!-- 메인 화면 (설문이 존재할 때) -->
+
+<body class="body-myPolls">
+  <div id="wrapper" class="myPolls">
+    <div class="page-top">
+      <div class="page-header">
+        <div class="page-header-left">
+          <button class="icon-container">
+            <i class="icon icon-back"></i>
+          </button>
+        </div>
+        <h1 class="page-title logo">
+          <img src="../images/goSurvey/logo.png" alt="logo" />
+        </h1>
+      </div>
+
+      <div class="search-container">
+        <button class="search-area search-box-style01">
+          설문을 검색해보세요!
+        </button>
+      </div>
+
+      <div class="tabmenu">
+        <!--
+          [전달사항] 활성화된 메뉴에 active 클래스네임을 토글해주세요.
+        -->
+        <button class="tabmenu-item active">나의 설문함</button>
+        <button class="tabmenu-item">생성한 설문</button>
+        <button class="tabmenu-item">전체 설문함</button>
+      </div>
+    </div>
+    <div class="page-body">
+      <!--
+        [전달사항] 목록이 존재하기 때문에 .poll-list-container에 init 클래스가 없습니다.
+      -->
+      <div class="poll-list-container">
+        <div class="filter-container">
+          <button class="button-filter">
+            전체<i class="icon icon-filter"></i>
+          </button>
+          <!--
+          [전달사항] .button-filter에 active 클래스를 토글하면 화살표 방향이 바뀝니다.
+          -->
+          <button class="button-filter active">
+            생성순<i class="icon icon-filter"></i>
+          </button>
+        </div>
+
+        <div class="poll-list">
+
+          <!-- .poll-active (참여 가능한 설문) -->
+          <div class="poll-list-item poll-upcoming">
+            <button>
+              <div class="poll-info-top">
+                <p class="poll-title">신입생 환영회 장소를 선택해주세요.</p>
+                <p class="poll-process"><span class="text">진행률</span><span class="percent">0</span><em class="symbol">%</em></p>
+              </div>
+              <div class="poll-info-bottom">
+                <i class="poll-icon"></i>
+                <div class="container">
+                  <div class="poll-owner">
+                    <i class="icon icon-person"></i><span>ekbae</span>
+                  </div>
+                  <p class="poll-description">참여 가능한 설문입니다.</p>
+                </div>
+                <p class="poll-duedate">2019.03.06 10:30 시작</p>
+              </div>
+            </button>
+          </div>
+          <!-- // end -->
+
+          <!-- .poll-inactive (참여 불가능한 설문) -->
+          <div class="poll-list-item poll-inactive">
+            <button>
+              <div class="poll-info-top">
+                <p class="poll-title">설문조사의 타이틀입니다. 설문조사의 타이틀입니다. 설문조사의 타이틀입니다. </p>
+                <p class="poll-process"><span class="text">진행률</span><span class="percent">22</span><em class="symbol">%</em></p>
+              </div>
+              <div class="poll-info-bottom">
+                <i class="poll-icon"></i>
+                <div class="container">
+                  <div class="poll-owner">
+                    <i class="icon icon-person"></i><span>ekbae</span>
+                  </div>
+                  <p class="poll-description">참여 불가능한 설문입니다.</p>
+                </div>
+                <p class="poll-duedate">2019.03.06 10:30 시작</p>
+              </div>
+            </button>
+          </div>
+          <!-- // end -->
+
+          <!-- .poll-upcoming (시작 전 && 참여 가능) -->
+          <div class="poll-list-item poll-upcoming">
+            <button>
+              <div class="poll-info-top">
+                <p class="poll-title">신입생 환영회 장소를 선택해주세요.</p>
+                <p class="poll-process"><span class="text">진행률</span><span class="percent">0</span><em class="symbol">%</em></p>
+              </div>
+              <div class="poll-info-bottom">
+                <i class="poll-icon"></i>
+                <div class="container">
+                  <div class="poll-owner">
+                    <i class="icon icon-person"></i><span>ekbae</span>
+                  </div>
+                  <p class="poll-description">곧 참여 가능한 설문입니다.</p>
+                </div>
+                <p class="poll-duedate">2019.03.06 10:30 시작</p>
+              </div>
+            </button>
+          </div>
+          <!-- // end -->
+
+          <!-- .poll-complete (설문 참여 완료) -->
+          <div class="poll-list-item poll-complete">
+            <button>
+              <div class="poll-info-top">
+                <p class="poll-title">신입생 환영회 장소를 선택해주세요.</p>
+                <p class="poll-process"><span class="text">진행률</span><span class="percent">1</span><em class="symbol">%</em></p>
+              </div>
+              <div class="poll-info-bottom">
+                <i class="poll-icon"></i>
+                <div class="container">
+                  <div class="poll-owner">
+                    <i class="icon icon-person"></i><span>ekbae</span>
+                  </div>
+                  <p class="poll-description">설문이 완료되었습니다.</p>
+                </div>
+                <p class="poll-duedate">1/100명</p>
+              </div>
+            </button>
+          </div>
+          <!-- // end -->
+
+          <!-- .poll-finished (설문 마감 && 참여 완료) -->
+          <div class="poll-list-item poll-finished">
+            <button>
+              <div class="poll-info-top">
+                <p class="poll-title">신입생 환영회 장소를 선택해주세요.</p>
+                <p class="poll-process"><span class="text">진행률</span><span class="percent">100</span><em class="symbol">%</em></p>
+              </div>
+              <div class="poll-info-bottom">
+                <i class="poll-icon"></i>
+                <div class="container">
+                  <div class="poll-owner">
+                    <i class="icon icon-person"></i><span>ekbae</span>
+                  </div>
+                  <p class="poll-description">설문이 완료되었습니다.</p>
+                </div>
+                <p class="poll-duedate">100/100명</p>
+              </div>
+            </button>
+          </div>
+          <!-- // end -->
+
+          <!-- .poll-finished (설문 마감) -->
+          <div class="poll-list-item poll-finished">
+            <button>
+              <div class="poll-info-top">
+                <p class="poll-title">신입생 환영회 장소를 선택해주세요.</p>
+                <p class="poll-process"><span class="text">진행률</span><span class="percent">15</span><em class="symbol">%</em></p>
+              </div>
+              <div class="poll-info-bottom">
+                <i class="poll-icon"></i>
+                <div class="container">
+                  <div class="poll-owner">
+                    <i class="icon icon-person"></i><span>ekbae</span>
+                  </div>
+                  <p class="poll-description">설문이 마감되었습니다.</p>
+                </div>
+                <p class="poll-duedate">2019.03.07 10:00 마감</p>
+              </div>
+            </button>
+          </div>
+          <!-- // end -->
+
+        </div>
+
+        <!--
+          [전달사항] .poll-list-container에서 init 클래스가 사라지면 .no-polls의 텍스트는 더 이상 보이지 않습니다.
+        -->
+        <div class="no-polls">
+          <p class="no-polls-text">
+            표시할 설문이 없습니다. <br />
+            아래 버튼을 눌러 <br />
+            새로운 설문을 생성해보세요!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      [전달사항] 상황에 맞춰 클래스를 변경해주세요.
+        (1) 생성된 투표가 1개 이상 = fab-sylte01
+        (2) 생성된 투표가 1개 미만 = fab-sylte02
+    -->
+    <button class="fab fab-style01"></button>
+  </div>
+</body>
+
+</html>
