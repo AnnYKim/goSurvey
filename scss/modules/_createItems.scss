@@ -506,7 +506,6 @@
       height: 1.6rem;
       background-image: icon(close, "6e6e6e");
       background-size: 100%;
-      // transform: translateY(-50%);
     }
 
     .text {
@@ -521,7 +520,8 @@
   @include justify-content(center);
   width: 100%;
   height: 5rem;
-  margin-top: 2rem;
+  // margin-top: 2rem;
+  margin-top: 1rem;
 
   [class^="button-"] {
     @include flex-grow(1);
@@ -547,225 +547,258 @@
 .create-item .voters-selectGroup {
   //create step3 그룹선택 화면
 
-  .voters-setting {
-    // 개별 항목
-    position: relative;
-    width: 100%;
-    margin-top: 0.9rem;
-    background-color: $color-noPolls-bg;
-    border: 1px solid $color-lightgray2;
-
-    &>.title {
-      position: relative;
-      font-size: 1.2rem;
-      height: 3rem;
-      line-height: 3rem;
-      padding-left: 1.1rem;
-      padding-right: 0.4rem;
-      border-bottom: 1px solid $color-lightgray2;
-
-      &>.selectAll {
-        //기본 ui 숨기기
-        position: absolute;
-        left: -9999rem;
-
-        &+label {
-          position: absolute;
-          top: 50%;
-          right: 0.4rem;
-          display: block;
-          width: 6.4rem;
-          height: 2.2rem;
-          line-height: 2rem;
-          text-align: right;
-          padding-right: 0.8rem;
-          background-color: $color-noPolls-bg;
-          border: 1px solid $color-filter-border;
-          border-radius: 1.4rem;
-          @include transform(translateY(-50%));
-
-          &:before {
-            display: block;
-            position: absolute;
-            left: 1.1rem;
-            top: 0.5rem;
-            width: 1.2rem;
-            height: 0.9rem;
-            background-image: icon(checkmark, "a8a8a8");
-            background-size: 100%;
-            content: "";
-          }
-        }
-
-        &:checked+label {
-          background-color: #cdf1ff;
-          border-color: #29ace4;
-
-          &:before {
-            background-image: icon(checkmark, "29ace4");
-            background-size: 100%;
-          }
-        }
-      }
-    }
-
-    &>.body {
-      min-height: 5rem;
-
-      &.voters-radio-container {
-        @include flexbox;
-        @include flex-wrap(wrap);
-
-        &>.block {
-          // background: pink;
-          @include flex-grow(1);
-          @include flex-basis(50%);
-          border-left: 1px solid $color-lightgray2;
-          border-bottom: 1px solid $color-lightgray2;
-
-          &:nth-child(2n + 1) {
-            border-left: none;
-          }
-
-          &:nth-child(n + 3) {
-            border-bottom: none;
-          }
-        }
-
-        [type="radio"] {
-
-          &:checked,
-          &:not(:checked) {
-            //기본 라디오 ui 숨기기
-            position: absolute;
-            left: -9999rem;
-          }
-
-          &:checked+label,
-          &:not(:checked)+label {
-            //라벨 스타일링
-            display: block;
-            position: relative;
-            height: 5rem;
-            line-height: 5rem;
-            font-size: 1.4rem;
-            text-align: center;
-          }
-
-          &:checked+label {
-            background-color: #fff;
-            border: 1px solid $color-blue;
-          }
-        }
-      }
-
-      &>.text {
-        font-size: 1.4rem;
-        line-height: 5rem;
-
-        // &.placeholder {
-        //   color: $color-gray;
-        // }
-      }
-    }
-
-    .voters-dropdown-container {
-      //학과 부서 선택 영역
-      position: relative;
-      width: 100%;
-
-      .dropdown-content {
-        // @include flexbox;
-        // @include align-items(center);
-        // @include justify-content(space-between);
-
-        .button-dropdown {
-          width: 100%;
-          height: 5rem;
-          text-align: left;
-          padding: 0 1.1rem;
-          font-size: 1.4rem;
-          line-height: 5rem;
-        }
-      }
-
-      .voters-list-container {
-        padding: 0 1rem 0;
-      }
-
-      .placeholder-text {
-        @include flex-grow(1);
-      }
-
-      .icon-container {
-        @include flex-grow(0);
-
-        .icon {
-          position: absolute;
-          top: 2rem;
-          right: 1rem;
-          width: 1.6rem;
-          height: 1.2rem;
-          background-size: 100%;
-        }
-      }
-
-      .dropdown-list {
-        display: none;
-      }
-
-      &.active {
-        .icon-dropdown {
-          background-image: icon(dropdown-up, "000000");
-        }
-
-        .dropdown-ui-department {
-          overflow-y: auto;
-          height: auto;
-          max-height: 22rem;
-          border-top: 1px solid #e7e7e7;
-        }
-      }
-    }
-
-    //end of .voters-dropdown-container
-
-    .voters-checkbox-container {
-      @include flexbox;
-      @include align-items(center);
-      padding: 0 1.2rem;
-
-      .checkbox-block {
-        margin-left: 4.7rem;
-
-        &.grade {
-          margin-left: 1.5rem;
-        }
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-    }
-
-    //end of .voters-checkbox-container
-  }
-
-  //end of setting
-
   .button-select-done {
     @include align-self(flex-end);
     display: block;
-    width: 10rem;
-    height: 3.4rem;
-    margin: 1.9rem 0 2.3rem;
+    width: 100%;
+    height: 3.5rem;
+    margin: 0.9rem 0 7.5rem;
     font-size: 1.2rem;
     text-align: center;
     background-color: #fff;
     border-radius: 1.7rem;
     border: 1px solid #d2d2d2;
+
+    &:hover,
+    &:active {
+      border: 1px solid #29ace4;
+    }
+
+    &:after {
+      position: absolute;
+      left: 50%;
+      margin-top: 3.8rem;
+      margin-left: -0.8rem;
+      display: block;
+      width: 1.7rem;
+      height: 2.1rem;
+      background-image: icon(targetList-arrow, "000000");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      content: '';
+      @include pointer-none;
+
+    }
   }
 }
+
+.voters-setting {
+  // 개별 항목
+  position: relative;
+  width: 100%;
+  margin-top: 0.9rem;
+  background-color: $color-noPolls-bg;
+  border: 1px solid $color-lightgray2;
+
+  &>.title {
+    position: relative;
+    font-size: 1.2rem;
+    height: 3rem;
+    line-height: 3rem;
+    padding-left: 1.1rem;
+    color: #0c0c0c;
+    padding-right: 0.4rem;
+    border-bottom: 1px solid $color-lightgray2;
+
+    &>.selectAll {
+      //기본 ui 숨기기
+      position: absolute;
+      left: -9999rem;
+
+      &+label {
+        position: absolute;
+        top: 50%;
+        right: 0.4rem;
+        display: block;
+        width: 6.4rem;
+        height: 2.2rem;
+        line-height: 2rem;
+        text-align: right;
+        padding-right: 0.8rem;
+        background-color: $color-noPolls-bg;
+        border: 1px solid $color-filter-border;
+        border-radius: 1.4rem;
+        @include transform(translateY(-50%));
+
+        &:before {
+          display: block;
+          position: absolute;
+          left: 1.1rem;
+          top: 0.5rem;
+          width: 1.2rem;
+          height: 0.9rem;
+          background-image: icon(checkmark, "a8a8a8");
+          background-size: 100%;
+          content: "";
+        }
+      }
+
+      &:checked+label {
+        background-color: #cdf1ff;
+        border-color: #29ace4;
+
+        &:before {
+          background-image: icon(checkmark, "29ace4");
+          background-size: 100%;
+        }
+      }
+    }
+  }
+
+  &>.body {
+    min-height: 5rem;
+
+    &.voters-radio-container {
+      @include flexbox;
+      @include flex-wrap(wrap);
+
+      &>.block {
+        // background: pink;
+        @include flex-grow(1);
+        @include flex-basis(50%);
+        border-left: 1px solid $color-lightgray2;
+        border-bottom: 1px solid $color-lightgray2;
+
+        &:nth-child(2n + 1) {
+          border-left: none;
+        }
+
+        &:nth-child(n + 3) {
+          border-bottom: none;
+        }
+      }
+
+      [type="radio"] {
+
+        &:checked,
+        &:not(:checked) {
+          //기본 라디오 ui 숨기기
+          position: absolute;
+          left: -9999rem;
+        }
+
+        &:checked+label,
+        &:not(:checked)+label {
+          //라벨 스타일링
+          display: block;
+          position: relative;
+          height: 5rem;
+          line-height: 5rem;
+          font-size: 1.4rem;
+          text-align: center;
+        }
+
+        &:checked+label {
+          background-color: #fff;
+          border: 1px solid #29ace4;
+        }
+      }
+    }
+
+    &>.text {
+      font-size: 1.4rem;
+      line-height: 5rem;
+
+      // &.placeholder {
+      //   color: $color-gray;
+      // }
+    }
+  }
+
+  .voters-dropdown-container {
+    //학과 부서 선택 영역
+    position: relative;
+    width: 100%;
+
+    .dropdown-content {
+      // @include flexbox;
+      // @include align-items(center);
+      // @include justify-content(space-between);
+
+      .button-dropdown {
+        width: 100%;
+        height: 5rem;
+        text-align: left;
+        padding: 0 1.1rem;
+        font-size: 1.4rem;
+        line-height: 5rem;
+      }
+    }
+
+    .voters-list-container {
+      padding: 0 1rem 0;
+    }
+
+    .placeholder-text {
+      @include flex-grow(1);
+    }
+
+    .icon-container {
+      @include flex-grow(0);
+
+      .icon {
+        position: absolute;
+        top: 2rem;
+        right: 1rem;
+        width: 1.6rem;
+        height: 1.2rem;
+        background-size: 100%;
+      }
+    }
+
+    .dropdown-list {
+      display: none;
+    }
+
+    &.active {
+      .icon-dropdown {
+        background-image: icon(dropdown-up, "000000");
+      }
+
+      .dropdown-ui-department {
+        overflow-y: auto;
+        height: auto;
+        max-height: 22rem;
+        border-top: 1px solid #e7e7e7;
+      }
+    }
+  }
+
+  //end of .voters-dropdown-container
+
+  .voters-checkbox-container {
+    @include flexbox;
+    @include align-items(center);
+    padding: 0 1.2rem;
+
+    .checkbox-block {
+      margin-left: 4.7rem;
+
+      &.grade {
+        margin-left: 1.5rem;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  //end of .voters-checkbox-container
+
+
+  .voters-targetList-container {
+    padding: 1rem;
+
+    .init-text {
+      font-size: 1.4rem;
+      line-height: 3rem;
+    }
+  }
+}
+
+//end of setting
 
 //----end of .voters-selectGroup
 
@@ -790,6 +823,12 @@
     .button-search-delete {
       right: 1rem;
     }
+
+    .input-error {
+      position: absolute;
+      bottom: -2.8rem;
+      left: 0;
+    }
   }
 
   .search-message {
@@ -806,6 +845,8 @@
       }
 
       .dropdown-ui-searchResult {
+        z-index: 1;
+        position: relative;
         overflow-y: auto;
         height: auto;
         max-height: 22rem;
@@ -1074,7 +1115,16 @@
 
 
 
+// +++++++++++++++
 // go survey 전용
+// +++++++++++++++
+
+.create-item-container {
+  // background-color: #fff;
+}
+
+
+// 2단계
 
 .wrap-question {
   //접고 닫기 용도
@@ -1160,4 +1210,40 @@
       }
     }
   }
+}
+
+
+// 3단계
+.tabmenu.create-target {
+  height: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  .tabmenu-item {
+    line-height: 5rem;
+    font-size: 1.6rem;
+  }
+}
+
+.create-item>li.voters-targetList {
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top: 0;
+
+  .init-text {
+    display: none;
+  }
+
+  .voters-targetList-container.init {
+    .init-text {
+      display: block;
+    }
+  }
+}
+
+.input-error {
+  color: #ee6262;
+  font-size: 1.2rem;
+  margin: 0.45rem 0 0.45rem 1.2rem;
 }

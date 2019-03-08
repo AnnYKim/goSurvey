@@ -134,7 +134,11 @@ $css: ""
     //----
     //설문항목 답변 삭제
     //----
-    questiona-answer-delete: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><path stroke="%23CACACA" stroke-dasharray="1,2" stroke-linecap="round" stroke-linejoin="round" d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"/><rect width="16" height="3" x="4" y="11" fill="%23919191" rx="1.5"/></g></svg>'
+    questiona-answer-delete: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><path stroke="%23CACACA" stroke-dasharray="1,2" stroke-linecap="round" stroke-linejoin="round" d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"/><rect width="16" height="3" x="4" y="11" fill="%23919191" rx="1.5"/></g></svg>',
+    //----
+    //설문대상 설정의 화살표
+    //----
+    targetList-arrow: '<svg xmlns="http://www.w3.org/2000/svg" width="17" height="21"><g fill="none" fill-rule="evenodd"><path fill="%23B2E3FF" d="M8.34 20.4l.097-.001a2.337 2.337 0 0 0 1.507-.618l5.976-5.501a2.35 2.35 0 1 0-3.184-3.46L8.34 14.869l-4.397-4.047A2.35 2.35 0 0 0 .758 14.28l5.977 5.501c.43.395.966.599 1.507.618.032.002.065 0 .097 0"/><path fill="%23CDEDFF" d="M8.34 10.2l.097-.001a2.337 2.337 0 0 0 1.507-.618L15.92 4.08A2.35 2.35 0 1 0 12.736.62L8.34 4.669 3.942.621A2.35 2.35 0 0 0 .758 4.08l5.977 5.501c.43.395.966.599 1.507.618.032.002.065 0 .097 0"/></g></svg>'
     );
   $icon: _buildIcon(map-get($icons, $icon-name));
   @return url("data:image/svg+xml;utf8,#{$icon}");
