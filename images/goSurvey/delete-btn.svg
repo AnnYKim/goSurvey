@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+    <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+        <path stroke="#CACACA" stroke-dasharray="1,2" stroke-linecap="round" stroke-linejoin="round" d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"/>
+        <rect width="16" height="3" x="4" y="11" fill="#919191" rx="1.5"/>
+    </g>
+</svg>

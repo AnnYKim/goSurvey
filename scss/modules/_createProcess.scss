@@ -8,7 +8,7 @@
   @include justify-content(center);
   height: 4.8rem;
   padding: 0 1.8rem;
-  background-color: $color-orange;
+  background-color: #2878ab;
   counter-reset: number; //카운터 리셋
 
   &:before {
@@ -16,7 +16,7 @@
     display: block;
     z-index: 1;
     position: absolute;
-    top: -3.6rem;
+    top: -4rem;
     right: 1.3rem;
     width: 5.7rem;
     height: 5.4rem;
@@ -74,15 +74,17 @@
       border-radius: 50%;
       text-align: center;
       font-size: 1.4rem;
-      color: $color-brown2;
-      background-color: $color-lightorange;
-      border: 1px dotted $color-brown2;
+      color: #124665;
+      background-color: #438fbc;
+      border: 1px dotted #60b9ed;
       box-sizing: border-box;
       //---
       content: counter(number);
       counter-increment: number;
     }
-  } //end of .process-level (기본)
+  }
+
+  //end of .process-level (기본)
 
   // ----
 }
@@ -99,7 +101,7 @@
       min-width: 19.4rem;
       width: 70%;
       position: relative;
-      background-color: $color-lightorange;
+      background-color: #469acb;
 
       .text {
         //텍스트 보임
@@ -110,7 +112,7 @@
           display: block;
           left: 100%;
           border-width: 2.4rem 0 2.4rem 2.4rem;
-          border-color: transparent transparent transparent $color-lightorange;
+          border-color: transparent transparent transparent #469acb;
         }
       }
 
@@ -120,6 +122,7 @@
         margin-right: 0.8rem;
         background-color: #fff;
         border-color: #fff;
+        color: #005f7f;
       }
     }
 
@@ -132,11 +135,13 @@
         display: block;
         left: 100%;
         border-width: 2.4rem 0 2.4rem 2.4rem;
-        border-color: transparent transparent transparent $color-orange;
+        border-color: transparent transparent transparent #2878ab;
       }
     }
   }
-} //for문 종료
+}
+
+//for문 종료
 
 //예외 상황 정의
 .create-process.active-1 {
@@ -151,11 +156,12 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background-color: $color-lightorange;
+      background-color: #469acb;
       content: "";
     }
   }
 }
+
 //예외 상황 정의
 .create-process.active-4 {
   .process-level:nth-child(3) {
@@ -163,27 +169,30 @@
       // display: none;
       // width: 100%;
       height: 100%;
-      background-color: $color-orange;
+      background-color: #2878ab;
     }
   }
+
   .process-level:nth-child(4) {
     margin-right: 0;
     margin-left: 4rem;
     padding-left: 0;
+
     .text:before {
       position: absolute;
       top: 0;
       left: 100%;
       width: 100%;
       height: 100%;
-      background-color: $color-lightorange;
+      background-color: #469acb;
       content: "";
     }
+
     .text:after {
       z-index: 1;
       left: -2.4rem;
       border-width: 2.4rem 2.4rem 2.4rem 0;
-      border-color: transparent $color-lightorange transparent transparent;
+      border-color: transparent #469acb transparent transparent;
     }
   }
 }

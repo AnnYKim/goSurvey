@@ -39,38 +39,12 @@
       @include flex-direction(column);
     }
 
-    .button-image-attach {
-      @include flex-grow(0);
-      width: 3.6rem;
-      height: 3.6rem;
-
-      .icon-image-attach {
-        width: 3.6rem;
-        height: 3.6rem;
-        background-position: 50% 50%;
-        background-size: 2.8rem 2.8rem;
-      }
-
-      &+.image-uploaded {
-        position: absolute;
-        top: 0.65rem;
-        right: 2.1rem;
-        display: block;
-        width: 3.6rem;
-        height: 3.6rem;
-        background-color: $color-lightgray;
-        @include pointer-none;
-        @include select-none;
-
-        img {
-          display: block;
-          width: 100%;
-          height: 100%;
-        }
-      }
+    .button-answer-delete {
+      background-image: icon(questiona-answer-delete, "000000");
+      background-size: 26px 26px;
+      background-position: 50%;
+      background-repeat: no-repeat;
     }
-
-    //end of .button-image-attach
 
     .button-add-votingItem {
       position: absolute;
@@ -87,6 +61,7 @@
   .create-title {
     @include flex-grow(1);
     font-size: 1.6rem;
+    color: #0c0c0c;
     font-weight: $fw-m;
   }
 
@@ -103,6 +78,15 @@
       color: $color-create-placeholder;
       font-weight: $fw-r;
     }
+  }
+
+  .create-error {
+    border: 1px solid #fe5b5b !important;
+    background: #ffeded;
+  }
+
+  .create-error+.create-error {
+    border-top-color: transparent !important;
   }
 
   .create-description {
@@ -552,11 +536,11 @@
   }
 
   .button-next {
-    background-color: $color-yellow;
+    background-color: #83cbf4;
   }
 
   .button-confirm {
-    background-color: #fcc200;
+    background-color: #6abdee;
   }
 }
 
@@ -1068,37 +1052,112 @@
     }
   }
 
-  .set-textItem-area,
-  .set-dateItem-area {
+  .set-choiceItem-area,
+  .set-answerItem-area {
     display: none;
   }
 
-  &.date {
-    .set-dateItem-area {
+}
+
+.type-choice {
+  .set-choiceItem-area {
+    display: block;
+  }
+}
+
+.type-answer {
+  .set-answerItem-area {
+    display: block;
+  }
+}
+
+
+
+
+// go survey 전용
+
+.wrap-question {
+  //접고 닫기 용도
+  overflow: hidden;
+
+  .question-title {
+    position: relative;
+    line-height: 3rem;
+    font-weight: $fw-b;
+    letter-spacing: -0.05rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    background-color: #ddeff9;
+    padding: 0 4.6rem;
+
+    &:before {
+      position: absolute;
+      top: 0.85rem;
+      left: 2.2rem;
       display: block;
+      width: 1.6rem;
+      height: 1.5rem;
+      background-image: icon(question-icon, "3DADED");
+      background-size: 100%;
+      content: '';
+    }
+
+    .question-text {
+      height: 100%;
     }
   }
 
-  &.text {
-    .set-textItem-area {
-      display: block;
+  .question-delete {
+    position: absolute;
+    top: 0.6rem;
+    right: 1.7rem;
+    font-size: 1.2rem;
+    color: #0e0e0e;
+    letter-spacing: -0.05rem;
+  }
+
+  .question-content {
+
+    // height: 0;
+    &>.create-item:first-of-type {
+      margin-top: 0;
     }
   }
 }
 
-// [*] 투표정보/이미지 등록 영역
-.create-poll-info {
-  .button-image-attach {
-    display: none;
-  }
+.question-container {
+  padding-top: 1rem;
+}
 
-  &.init {
-    .button-image-attach {
-      display: block;
-    }
+//문항 추가하기 버튼
+.add-question {
+  padding: 0 0.8rem;
+  margin-bottom: 7rem;
 
-    .create-description-image {
-      display: none;
+  .button-add-question {
+    width: 100%;
+    height: 7rem;
+    color: #6fb4db;
+    font-size: 1.6rem;
+    font-weight: $fw-m;
+    border-radius: 0.2rem;
+    border: dashed 2px #bbd7e7;
+
+    span {
+      position: relative;
+      padding-left: 2rem;
+
+      &:before {
+        position: absolute;
+        top: 0.65rem;
+        left: -0.35rem;
+        display: block;
+        width: 1.3rem;
+        height: 1.3rem;
+        background-image: icon(add-question, "3DADED");
+        background-size: 100%;
+        content: '';
+      }
     }
   }
 }

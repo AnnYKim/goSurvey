@@ -114,43 +114,16 @@ $(function () {
     });
 
     //투표 타입 설정에 따른 UI
-    $('input[name="votingItemType"]').on("click", function () {
-      if ($("#votingItemType-text:checked").length > 0) {
-        $(".set-votingItemType-area")
-          .removeClass("date")
-          .addClass("text");
-      } else if ($("#votingItemType-date:checked").length > 0) {
-        $(".set-votingItemType-area")
-          .removeClass("text")
-          .addClass("date");
-      }
-    });
-
-    //+ 버튼을 통한 투표 항목 추가
-    $(".button-add-votingItem").on("click", function (e) {
-      e.preventDefault();
-
-      if ($(this).data("type") === "text") {
-        var newVotingItem = `
-        
-        <li class="init">
-        <input type="text" placeholder="투표 항목을 입력하세요." class="create-input" />
-        <button class="button-image-delete"><i class="icon icon-delete"></i></button>
-        <button class="button-image-attach"><i class="icon icon-image-attach"></i></button>
-        <div class="image"><img src="" alt="image"></div>
-      </li>`;
-        $(".set-textItem-area li:last").before(newVotingItem);
-      } else if ($(this).data("type") === "date") {
-        var newVotingItem = `
-        <li>
-          <div class="create-date-container init">
-            <p class="create-date-placeholder">날짜를 선택하세요.</p>
-            <p class="create-date"><i class="icon icon-clock"></i></p>
-            <button class="button-date-delete"><i class="icon icon-delete"></i></button>
-            <input type="datetime-local" id="date-item-1" class="input-hidden" />
-          </div>
-        </li>`;
-        $(".set-dateItem-area li:last").before(newVotingItem);
+    $('input[name^="votingItemType"]').on("click", function () {
+      if ($(this).parent().find("[id^='votingItemType-choice']:checked").length > 0) {
+        console.log($("[id^='votingItemType-choice']:checked"))
+        console.log("객관식!!!")
+        $(this).parents(".set-votingItemType-area").removeClass("type-answer").addClass("type-choice");
+      } else if ($(this).parent().find("[id^='votingItemType-answer']:checked").length > 0) {
+        console.log("주관식!!!")
+        $(this).parents(".set-votingItemType-area")
+          .removeClass("type-choice")
+          .addClass("type-answer");
       }
     });
 

@@ -27,15 +27,18 @@
     }
 
     .search-description {
+      position: relative;
+      z-index: 1;
       //검색 결과입니다 문구
       font-size: 1.2rem;
       color: #0c0c0c;
-      margin: 1rem 0 1rem 1.2rem;
+      // margin: 1rem 0 1rem 1.2rem;
+      margin: 1.4rem 0 1.6rem 1.2rem;
 
       .keywords {
         @include ellipsis;
         display: inline-block;
-        max-width: 50%;
+        max-width: 45%;
         vertical-align: top;
       }
     }
