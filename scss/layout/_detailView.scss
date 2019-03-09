@@ -1,0 +1,209 @@
+@charset "utf-8";
+
+.body-pollDetails {
+  overflow: hidden;
+  background-color: $color-noPolls-bg;
+}
+
+.pollDetails {
+  //[*] 설문 자세히보기
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .page-top {
+    height: $ly-takeVote-header-height;
+    background-color: #92caf0;
+    box-sizing: border-box;
+  }
+
+  .page-body {
+    overflow: hidden;
+    width: 100%;
+    padding-top: $ly-takeVote-header-height;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+  }
+
+  .create-description {
+    min-height: 28.6rem;
+  }
+}
+
+.pollDetails-info {
+  position: relative;
+  width: 100%;
+  @include flex-direction(column);
+  @include align-items(flex-start);
+
+  .pollDetails-duedate {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .pollDetails-progress {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .text {
+      font-size: 1.6rem;
+
+      &:after {
+        display: block;
+        content: "";
+        margin-top: 0.6rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        height: 0.3rem;
+        background-color: #f4f4f4;
+      }
+    }
+
+    .bar {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      height: 0.3rem;
+      background-color: #93d5f1;
+      border: solid 1px #29ace4;
+    }
+  }
+
+  .pollDetails-response {
+    position: absolute;
+    bottom: 3rem;
+    right: 0;
+    font-size: 1.2rem;
+
+    .icon-person {
+      vertical-align: sub;
+      margin-right: 0.3rem;
+      width: 1.2rem;
+      height: 1.4rem;
+      background-image: icon(person, "6e6e6e");
+    }
+  }
+}
+
+.itemDetails-userAnswer {
+  margin-top: 0.2rem;
+  background-color: #f4f4f4;
+  border: 1px solid #e7e7e7;
+
+  .userAnswer-title {
+    padding: 0 1rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    font-weight: $fw-b;
+    line-height: 3rem;
+    border-bottom: 1px solid #e7e7e7;
+  }
+
+  .userAnswer-list {
+    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #e7e7e7;
+    line-height: 2.14;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .text {
+      &:before {
+        position: relative;
+        top: 50%;
+        margin-top: -0.3rem;
+        margin-right: 0.5rem;
+        display: inline-block;
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        @include transform(translateY(-50%));
+        background-color: #0c0c0c;
+      }
+    }
+  }
+}
+
+
+// survey cover
+.cover-container {
+  position: relative;
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(center);
+  width: 100%;
+  min-height: calc(100vh - 6.3rem);
+  padding: 0 2rem;
+  color: #fff;
+  @include bgi("bg-survey-start");
+  background-size: cover;
+  background-position: 50%;
+
+  .cover-title {
+    font-size: 3.8rem;
+    line-height: 1.16;
+    letter-spacing: -0.12rem;
+    word-break: keep-all;
+    margin-bottom: 1.8rem;
+  }
+
+  .cover-description {
+    opacity: 0.6;
+    font-size: 1.6rem;
+    line-height: 1.63;
+  }
+
+  .button-cover-close {
+    z-index: 1;
+    position: absolute;
+    top: 2.1rem;
+    right: 1.3rem;
+    width: 3rem;
+    height: 3rem;
+
+    .icon {
+      background-position: 50%;
+      background-image: icon(close, "ffffff");
+    }
+  }
+}
+
+.body-surveyCover {
+  height: 100%;
+
+  .buttons-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    width: 100%;
+    height: 6.3rem;
+
+    [class^="button-"] {
+      @include flex-grow(1);
+      @include flex-basis(50%);
+      height: 100%;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    .button-prev {
+      color: #fff;
+      background-color: #2b2b2b;
+    }
+
+    .button-next {
+      color: #fff;
+      background-color: #000000;
+    }
+  }
+}

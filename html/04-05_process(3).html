@@ -22,7 +22,7 @@
 </head>
 
 <body class="body-takeVote">
-  <!-- 설문 참여 화면 (첫 번째 항목) -->
+  <!-- 설문 참여 화면 (마지막 항목) -->
 
   <div id="wrapper" class="takeVote">
     <div class="page-top">
@@ -41,11 +41,12 @@
     <div class="page-body">
       <div class="create-item-container">
         <form>
-
           <div class="question-container">
             <div class="wrap-question">
               <div class="question-title">
-                <p class="question-text">Question 01</p>
+                <p class="question-text">Question 03</p>
+                <div class="question-isRequired">필수문항</div>
+                <!-- [전달사항] 필수문항일 때 추가해주세요. -->
               </div>
 
               <div class="question-content">
@@ -53,35 +54,38 @@
                   <li class="ly-padding-sm">
                     <div class="itemDetails">
                       <div class="itemDetails-text">
-                        강의 계획서대로 잘 진행 되었나요?
-                      </div>
-                      <div class="itemDetails-topInfo">
-                        <div class="info"><i class="icon icon-checkmark-multiple"></i>복수 선택 가능</div>
-                        <!-- [전달사항] 복수 선택가능 시에 넣어주세요. -->
+                        단일 선택만 가능한 항목입니다.
                       </div>
                       <ul class="itemDetails-choice">
                         <li class="itemDetails-choice-list">
                           <div class="choice-block">
-                            <input id="answer1" name="question1" type="checkbox" class="answer-style01" />
+                            <input id="answer1" name="question3" type="radio" class="answer-style01" />
                             <!--
-                              [전달사항] 복수 선택일 때는 input type이 checkbox입니다.
+                              [전달사항] 단일 선택일 때는 input type이 radio입니다.
                               [전달사항] 참여 가능일 때는 disabled를 제거해주세요.
                             -->
-                            <label for="answer1" class="answer-text">매우 만족스럽다.</label>
+                            <label for="answer1" class="answer-text">아란</label>
                           </div>
                         </li>
                         <li class="itemDetails-choice-list">
                           <div class="choice-block">
-                            <input id="answer2" name="question1" type="checkbox" class="answer-style01" />
+                            <input id="answer2" name="question3" type="radio" class="answer-style01" />
                             <label for="answer2" class="answer-text">
-                              만족스럽다.</label>
+                              경진</label>
                           </div>
                         </li>
                         <li class="itemDetails-choice-list">
                           <div class="choice-block">
-                            <input id="answer3" name="question1" type="checkbox" class="answer-style01" />
+                            <input id="answer3" name="question3" type="radio" class="answer-style01" />
                             <label for="answer3" class="answer-text">
-                              보통이다.</label>
+                              범연</label>
+                          </div>
+                        </li>
+                        <li class="itemDetails-choice-list">
+                          <div class="choice-block">
+                            <input id="answer4" name="question3" type="radio" class="answer-style01" />
+                            <label for="answer4" class="answer-text">
+                              나나</label>
                           </div>
                         </li>
                         <!--
@@ -89,27 +93,25 @@
                         -->
                         <li class="itemDetails-choice-list itemDetails-list-forUser">
                           <div class="choice-block">
-                            <input id="answer4" name="question1" type="checkbox" class="answer-style01" />
-                            <label for="answer4" class="answer-text"></label>
+                            <input id="answer5" name="question3" type="radio" class="answer-style01" />
+                            <label for="answer5" class="answer-text"></label>
                             <input type="text" placeholder="답변을 직접 입력하세요." class="answer-forUser" />
                           </div>
                         </li>
                         <!-- // end of .itemDetails-list-forUser -->
                       </ul>
-                      <div class="itemDetails-error">선택 항목과 동일한 내용을 입력할 수 없습니다.</div>
-                      <!-- [전달사항] 에러 시 메시지 추가해주세요. -->
+                      <div class="itemDetails-error"></div>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
             <!-- //end of .wrap-question -->
-
           </div>
 
           <div class="create-buttons-container">
             <button class="button-prev">이전</button>
-            <button class="button-next">다음</button>
+            <button class="button-next">완료</button>
           </div>
         </form>
       </div>

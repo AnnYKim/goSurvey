@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>go survey</title>
+
+  <link type="text/css" rel="stylesheet" href="../css/style.css" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <meta name="format-detection" content="telephone=no, address=no, email=no" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="../js/test.js"></script>
+  <!--
+    [전달사항]
+    이벤트 확인용 js입니다.
+  -->
+</head>
+
+<body class="body-pollDetails">
+  <!-- 설문 상세 화면 (응답) -->
+
+  <div id="wrapper" class="pollDetails">
+    <div class="page-top">
+      <div class="page-header">
+        <div class="page-header-left">
+          <button class="icon-container">
+            <i class="icon icon-back"></i>
+          </button>
+        </div>
+        <h1 class="page-title">
+          설문 현황
+        </h1>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="create-item-container">
+        <div class="tabmenu create-target">
+          <button class="tabmenu-item">요약</button>
+          <button class="tabmenu-item active">응답</button>
+          <!-- [전달사항] 활성화 시, active 클래스 토글 부탁드립니다. -->
+        </div>
+
+        <div class="question-container">
+
+          <div class="wrap-question">
+            <div class="question-title">
+              <p class="question-text">Question 01</p>
+              <div class="question-isRequired">필수문항</div>
+              <!-- [전달사항] 필수문항일 때 추가해주세요. -->
+            </div>
+
+            <div class="question-content">
+
+              <ul class="create-item">
+                <li class="ly-padding-sm">
+                  <div class="itemDetails">
+                    <div class="itemDetails-text">
+                      강의 계획서대로 잘 진행 되었나요?
+                    </div>
+                    <div class="itemDetails-topInfo">
+                      <div class="info"><i class="icon icon-checkmark-response"></i>324개 응답</div>
+                      <div class="info"><i class="icon icon-checkmark-multiple"></i>복수 선택 가능</div>
+                    </div>
+                    <ul class="itemDetails-choice">
+                      <li class="itemDetails-choice-list">
+                        <div class="choice-block">
+                          <input id="answer1" name="question1" type="checkbox" class="answer-style01" disabled />
+                          <!--
+                            [전달사항] 읽기 전용일 때는 disabled를 넣어주세요~
+                          -->
+                          <label for="answer1" class="answer-text">매우 매우 만족스럽다.</label>
+                          <div class="itemDetails-choice-right">
+                            <div class="number">200</div>
+                          </div>
+                          <!--
+                            [전달사항] pollDetails 화면일 때 넣어주세요.
+                          -->
+                        </div>
+                        <div class="percentage" style="width: 62.5%"></div>
+                        <!--
+                            [전달사항] pollDetails 화면일 때 넣어주세요.
+                          -->
+                      </li>
+                      <li class="itemDetails-choice-list">
+                        <div class="choice-block">
+                          <input id="answer2" name="question1" type="checkbox" class="answer-style01" disabled />
+                          <label for="answer2" class="answer-text"> 매우 만족스럽다.</label>
+                          <div class="itemDetails-choice-right">
+                            <div class="number">100</div>
+                          </div>
+                        </div>
+                        <div class="percentage" style="width: 31.25%"></div>
+                      </li>
+                      <li class="itemDetails-choice-list">
+                        <div class="choice-block">
+                          <input id="answer2" name="question1" type="checkbox" class="answer-style01" disabled />
+                          <label for="answer2" class="answer-text"> 만족스럽다.</label>
+                          <div class="itemDetails-choice-right">
+                            <div class="number">20</div>
+                          </div>
+                        </div>
+                        <div class="percentage" style="width: 6.25%"></div>
+                      </li>
+                    </ul>
+                    <div class="itemDetails-userAnswer">
+                      <div class="userAnswer-title">기타 의견</div>
+                      <ul class="userAnswer-container">
+                        <li class="userAnswer-list">
+                          <p class="text">한 학기 동안 진짜 괴로웠습니다. 과제 엄청많고 와 이건 들으면 안됩니다.</p>
+                        </li>
+                        <li class="userAnswer-list">
+                          <p class="text">재수강각입니다. 최악입니다.</p>
+                        </li>
+                        <li class="userAnswer-list">
+                          <p class="text">학교 다니면서 들은 수업 중에 제일 좋았어요! 교수님께서 열정적으로 강의하시던 모습이 인상적입니다.</p>
+                        </li>
+                        <li class="userAnswer-list">
+                          <p class="text">대한민국은 민주공화국이다. 공개하지 아니한 회의 내용의 공표에 관하여는 법률이 정하는 바에 의한다.<br />
+                            국민의 모든 자유와 권리는 국가안전보장·질서유지 또는 공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있다.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <!-- //end of .wrap-question -->
+
+          <div class="wrap-question">
+
+            <div class="question-title">
+              <p class="question-text">Question 02</p>
+              <div class="question-isRequired">필수문항</div>
+              <!-- [전달사항] 필수문항일 때 추가해주세요. -->
+            </div>
+
+            <div class="question-content">
+
+              <ul class="create-item">
+                <li class="ly-padding-sm">
+                  <div class="itemDetails">
+                    <div class="itemDetails-text">
+                      기타 의견을 입력해주세요.
+                    </div>
+                    <div class="itemDetails-topInfo">
+                      <div class="info"><i class="icon icon-checkmark-response"></i>4개 응답</div>
+                    </div>
+                    <div class="itemDetails-userAnswer">
+                      <ul class="userAnswer-container">
+                        <li class="userAnswer-list">
+                          <p class="text">조별 과제 덕에 즐거운 분위기에서 모두가 친해질 수 있어서 좋았습니다.</p>
+                        </li>
+                        <li class="userAnswer-list">
+                          <p class="text">추천해주신 참고문헌이 정말 많은 도움이 되었습니다.</p>
+                        </li>
+                        <li class="userAnswer-list">
+                          <p class="text">3시간 수업인데 쉬는시간이 너무 짧았습니다.<br />대한민국은 민주공화국이다. 공개하지 아니한 회의 내용의 공표에 관하여는 법률이 정하는
+                            바에 의한다.<br />
+                            국민의 모든 자유와 권리는 국가안전보장·질서유지 또는 공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있다.</p>
+                        </li>
+                        <li class="userAnswer-list">
+                          <p class="text">교수님 유머에 시간 가는 줄 몰랐습니다.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <!-- //end of .wrap-question -->
+
+          <div class="wrap-question closed">
+            <!-- [전달사항] 닫힌 상태일 때는 .wrap-question에 .closed 클래스를 추가해주세요. -->
+            <div class="question-title">
+              <p class="question-text">Question 03</p>
+            </div>
+
+            <div class="question-content">
+
+              <ul class="create-item">
+                <li class="ly-padding-sm">
+                  <div class="itemDetails">
+                    <div class="itemDetails-text">
+                      질문 내용입니다.
+                    </div>
+                    <div class="itemDetails-topInfo">
+                      <div class="info"><i class="icon icon-checkmark-response"></i>10개 응답</div>
+                    </div>
+                    <ul class="itemDetails-choice">
+                      <li class="itemDetails-choice-list">
+                        <div class="choice-block">
+                          <input id="answer1" name="question3" type="checkbox" class="answer-style01" disabled />
+                          <!--
+                            [전달사항] 읽기 전용일 때는 disabled를 넣어주세요~
+                          -->
+                          <label for="answer1" class="answer-text">첫 번째 답변</label>
+                          <div class="itemDetails-choice-right">
+                            <div class="number">3</div>
+                          </div>
+                          <!--
+                            [전달사항] pollDetails 화면일 때 넣어주세요.
+                          -->
+                        </div>
+                        <div class="percentage" style="width: 30%"></div>
+                        <!--
+                            [전달사항] pollDetails 화면일 때 넣어주세요.
+                          -->
+                      </li>
+                      <li class="itemDetails-choice-list">
+                        <div class="choice-block">
+                          <input id="answer2" name="question3" type="checkbox" class="answer-style01" disabled />
+                          <label for="answer2" class="answer-text"> 두 번째 답변</label>
+                          <div class="itemDetails-choice-right">
+                            <div class="number">7</div>
+                          </div>
+                        </div>
+                        <div class="percentage" style="width: 70%"></div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <!-- //end of .wrap-question -->
+
+        </div>
+
+
+        <div class="create-buttons-container">
+          <button class="button-prev">강제종료</button>
+          <button class="button-next">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

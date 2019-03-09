@@ -1327,11 +1327,10 @@
   font-size: 1.2rem;
   letter-spacing: -0.03rem;
 
-  .participants,
-  .multiple {
+  .info {
     margin-right: 1.5rem;
 
-    &:before {
+    .icon {
       display: inline-block;
       content: '';
       width: 1.6rem;
@@ -1342,16 +1341,12 @@
       background-position: 50%;
     }
   }
-
-  .multiple:before {
-    background-image: icon(checkmark-multiple, "000000");
-  }
 }
 
-.itemDetails-answer {}
+.itemDetails-choice {}
 
 // 각 응답 리스트 (막대기!)
-.itemDetails-answer-list {
+.itemDetails-choice-list {
   position: relative;
   // @include flexbox;
   // @include align-items(center);
@@ -1362,7 +1357,7 @@
   margin-bottom: 0.2rem;
   background-color: #f4f4f4;
 
-  .answer-block {
+  .choice-block {
     z-index: 1;
     // @include flexbox;
     // @include align-items(center);
@@ -1383,7 +1378,7 @@
     content: "";
   }
 
-  .itemDetails-answer-right {
+  .itemDetails-choice-right {
     position: absolute;
     z-index: 10;
     top: 50%;
@@ -1416,11 +1411,15 @@
     width: calc(100% - 3.9rem);
     height: 100%;
     font-size: 1.4rem;
-    // padding-left: 3.9rem;
     @include pointer-none;
 
     @include placeholder {
       color: #a8a8a8;
+    }
+
+    &:disabled {
+      left: 0;
+      width: 100%;
     }
 
     &:focus {
@@ -1447,6 +1446,18 @@
     padding-left: 1.4rem;
     padding-right: 1.4rem;
   }
+}
+
+.itemDetails-error {
+  width: 100%;
+  height: 2rem;
+  @include ellipsis;
+  font-size: 1.3rem;
+  font-weight: $fw-b;
+  color: #ee6262;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 
@@ -1505,8 +1516,8 @@
   // >>>> disabled 처리 (읽기 전용)
 
   &:disabled+.answer-text {
-    padding-left: 1.4rem;
-    padding-right: 1.4rem;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
     cursor: auto;
   }
 
@@ -1514,4 +1525,34 @@
     display: none;
   }
 
+}
+
+
+.itemDetails-answer {
+  .answer-textarea {
+    position: relative;
+    min-height: 5rem;
+    background-color: #f4f4f4;
+    border: 1px solid #e7e7e7;
+    font-size: 1.4rem;
+    font-weight: $fw-m;
+    padding: 1.2rem 1rem;
+    line-height: 2.29;
+
+    &:empty:before {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      display: block;
+      content: attr(data-placeholder);
+      color: $color-create-placeholder;
+      @include transform(translateY(-50%));
+      margin-top: -0.2rem;
+      line-height: 1;
+    }
+
+    &[contenteditable="false"] {
+      outline: 0;
+    }
+  }
 }

@@ -1,357 +1,266 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <title>go survey</title>
 
-    <link type="text/css" rel="stylesheet" href="../css/style.css" />
+<head>
+  <title>go survey</title>
 
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
-    />
-    <meta
-      name="format-detection"
-      content="telephone=no, address=no, email=no"
-    />
-    <meta http-equiv="Content-Script-Type" content="text/javascript" />
-    <meta http-equiv="Content-Style-Type" content="text/css" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link type="text/css" rel="stylesheet" href="../css/style.css" />
 
-    <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="../js/test.js"></script>
-    <!--
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <meta name="format-detection" content="telephone=no, address=no, email=no" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="../js/test.js"></script>
+  <!--
     [전달사항]
     이벤트 확인용 js입니다.
-  --></head>
+  -->
+</head>
 
-  <body class="body-create">
-    <!-- 투표 생성 화면 (4단계) - 작성 정보 확인 -->
+<body class="body-create">
+  <!-- 투표 생성 화면 (4단계) - 작성 정보 확인 -->
 
-    <div id="wrapper" class="create create-confirmation">
-      <div class="page-top">
-        <div class="page-header">
-          <div class="page-header-left">
-            <button class="icon-container">
-              <i class="icon icon-close"></i>
-            </button>
-          </div>
-          <h1 class="page-title">
-            설문 생성
-          </h1>
+  <div id="wrapper" class="create create-confirmation">
+    <div class="page-top">
+      <div class="page-header">
+        <div class="page-header-left">
+          <button class="icon-container">
+            <i class="icon icon-close"></i>
+          </button>
         </div>
+        <h1 class="page-title">
+          설문 생성
+        </h1>
+      </div>
 
-        <div class="create-process active-4">
-          <!--
+      <div class="create-process active-4">
+        <!--
           [전달사항] 활성화된 순서에 따라 create-process에
           active-1, active-2, active-3, active-4 클래스를 각각 추가해주세요.
         -->
-          <div class="process-level">
-            <span class="text">설문 정보 입력</span>
-          </div>
-          <div class="process-level">
-            <span class="text">설문 문항 작성</span>
-          </div>
-          <div class="process-level">
-            <span class="text">설문 대상 설정</span>
-          </div>
-          <div class="process-level">
-            <span class="text">작성 정보 확인</span>
-          </div>
+        <div class="process-level">
+          <span class="text">설문 정보 입력</span>
         </div>
-      </div>
-
-      <div class="page-body">
-        <div class="create-item-container">
-          <form>
-            <ul class="create-item">
-              <li>
-                <p class="create-title">2019년도 1학기 강의평가</p>
-              </li>
-              <li class="ly-padding-sm">
-                <div class="create-description">
-                  <div>
-                    2019년도 1학기 기초디자인 강의평가입니다.<br />많은 참여
-                    부탁드립니다.
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            <div class="question-container">
-              <div class="wrap-question">
-                <div class="question-title">
-                  <p class="question-text">Question 01</p>
-                  <div class="question-isRequired">필수문항</div>
-                </div>
-
-                <div class="question-content">
-                  <ul class="create-item">
-                    <li class="ly-padding-sm">
-                      <div class="itemDetails">
-                        <div class="itemDetails-text">
-                          강의 계획서대로 잘 진행 되었나요?
-                        </div>
-                        <div class="itemDetails-topInfo">
-                          <div class="participants">320개 응답</div>
-                          <div class="multiple">복수 선택 가능</div>
-                        </div>
-                        <ul class="itemDetails-answer">
-                          <li class="itemDetails-answer-list">
-                            <div class="answer-block">
-                              <input
-                                id="answer1"
-                                name="question1"
-                                type="radio"
-                                class="answer-style01"
-                                checked
-                              />
-                              <label for="answer1" class="answer-text"
-                                >매우 만족한다.</label
-                              >
-                              <div class="itemDetails-answer-right">
-                                <div class="number">200</div>
-                              </div>
-                            </div>
-                            <div class="percentage" style="width: 90%"></div>
-                          </li>
-                          <li class="itemDetails-answer-list">
-                            <div class="answer-block">
-                              <input
-                                id="answer2"
-                                name="question1"
-                                type="radio"
-                                class="answer-style01"
-                              />
-                              <label for="answer2" class="answer-text"
-                                >Quis non amet anim sint duis enim id
-                                incididunt.</label
-                              >
-                              <div class="itemDetails-answer-right">
-                                <div class="number">30000</div>
-                              </div>
-                            </div>
-                            <div class="percentage" style="width: 10%"></div>
-                          </li>
-                          <li
-                            class="itemDetails-answer-list itemDetails-list-forUser"
-                          >
-                            <div class="answer-block">
-                              <input
-                                id="answer3"
-                                name="question1"
-                                type="radio"
-                                class="answer-style01"
-                              />
-                              <label for="answer3" class="answer-text"></label>
-                              <input
-                                type="text"
-                                placeholder="설문항목을 직접 입력하세요."
-                                class="answer-forUser"
-                              />
-                              <div class="itemDetails-answer-right">
-                                <div class="number">100</div>
-                              </div>
-                            </div>
-                            <div class="percentage" style="width: 10%"></div>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!-- //end of .wrap-question -->
-
-              <div class="wrap-question set-votingItemType-area">
-                <div class="question-title">
-                  <p class="question-text">Question 02</p>
-                  <button class="question-delete">삭제하기</button>
-                </div>
-
-                <div class="question-content">
-                  <ul class="create-item">
-                    <li>
-                      <p class="create-title">타입 설정</p>
-                    </li>
-                    <li>
-                      <div class="create-radio-container">
-                        <div class="radio">
-                          <input
-                            type="radio"
-                            id="votingItemType-choice2"
-                            name="votingItemType2"
-                            class="create-radio"
-                          />
-                          <label for="votingItemType-choice2">객관식</label>
-                        </div>
-                        <div class="radio">
-                          <input
-                            type="radio"
-                            id="votingItemType-answer2"
-                            name="votingItemType2"
-                            class="create-radio"
-                          />
-                          <label for="votingItemType-answer2">주관식</label>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-
-                  <div class="set-choiceItem-area">
-                    <ul class="create-item">
-                      <li>
-                        <p class="create-title">제목 입력</p>
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="설문 문항의 제목을 입력하세요."
-                          class="create-input"
-                          value="강의내용을 평가해주세요."
-                        />
-                      </li>
-                    </ul>
-
-                    <ul class="create-item">
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="답변 항목을 입력하세요."
-                          value="매우 만족"
-                          class="create-input"
-                        />
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="답변 항목을 입력하세요."
-                          value="만족"
-                          class="create-input"
-                        />
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="답변 항목을 입력하세요."
-                          value="보통"
-                          class="create-input"
-                        />
-                        <button class="button-answer-delete">
-                          <i class="icon icon-answer-delete"></i>
-                        </button>
-                      </li>
-                      <li>
-                        <button class="button-add-votingItem" data-type="text">
-                          <i class="icon icon-plus"></i>
-                        </button>
-                      </li>
-                    </ul>
-
-                    <ul class="create-item">
-                      <li>
-                        <div class="create-toggle">
-                          <p class="toggle-title">복수 선택</p>
-
-                          <input
-                            id="option-choice-multiple2"
-                            type="checkbox"
-                            class="toggle-checkbox"
-                          />
-                          <label
-                            for="option-choice-multiple2"
-                            class="toggle-switch"
-                          >
-                            <div class="toggle-body"></div>
-                            <div class="toggle-head"></div>
-                          </label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="create-toggle">
-                          <p class="toggle-title">직접 입력 허용</p>
-
-                          <input
-                            id="option-choice-write2"
-                            type="checkbox"
-                            class="toggle-checkbox"
-                          />
-                          <label
-                            for="option-choice-write2"
-                            class="toggle-switch"
-                          >
-                            <div class="toggle-body"></div>
-                            <div class="toggle-head"></div>
-                          </label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="create-toggle">
-                          <p class="toggle-title">필수 문항</p>
-
-                          <input
-                            id="option-choice-required2"
-                            type="checkbox"
-                            class="toggle-checkbox"
-                          />
-                          <label
-                            for="option-choice-required2"
-                            class="toggle-switch"
-                          >
-                            <div class="toggle-body"></div>
-                            <div class="toggle-head"></div>
-                          </label>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="set-answerItem-area">
-                    <ul class="create-item">
-                      <li>
-                        <p class="create-title">제목 입력</p>
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="설문 문항의 제목을 입력하세요."
-                          class="create-input"
-                        />
-                      </li>
-                    </ul>
-
-                    <ul class="create-item">
-                      <li>
-                        <div class="create-toggle">
-                          <p class="toggle-title">필수 문항</p>
-
-                          <input
-                            id="option-answer-required2"
-                            type="checkbox"
-                            class="toggle-checkbox"
-                          />
-                          <label
-                            for="option-answer-required2"
-                            class="toggle-switch"
-                          >
-                            <div class="toggle-body"></div>
-                            <div class="toggle-head"></div>
-                          </label>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- //end of .wrap-question -->
-            </div>
-
-            <div class="create-buttons-container">
-              <button class="button-next">다음</button>
-            </div>
-          </form>
+        <div class="process-level">
+          <span class="text">설문 문항 작성</span>
+        </div>
+        <div class="process-level">
+          <span class="text">설문 대상 설정</span>
+        </div>
+        <div class="process-level">
+          <span class="text">작성 정보 확인</span>
         </div>
       </div>
     </div>
-  </body>
+
+    <div class="page-body">
+      <div class="create-item-container">
+        <form>
+          <ul class="create-item">
+            <li>
+              <p class="create-title">2019년도 1학기 강의평가</p>
+            </li>
+            <li class="ly-padding-sm">
+              <div class="create-description">
+                <div>
+                  2019년도 1학기 기초디자인 강의평가입니다.<br />많은 참여
+                  부탁드립니다.
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="question-container">
+            <div class="wrap-question">
+              <div class="question-title">
+                <p class="question-text">Question 01</p>
+                <div class="question-isRequired">필수문항</div>
+              </div>
+
+              <div class="question-content">
+                <ul class="create-item">
+                  <li class="ly-padding-sm">
+                    <div class="itemDetails">
+                      <div class="itemDetails-text">
+                        강의 계획서대로 잘 진행 되었나요?
+                      </div>
+                      <div class="itemDetails-topInfo">
+                        <div class="response">320개 응답</div>
+                        <div class="multiple">복수 선택 가능</div>
+                      </div>
+                      <ul class="itemDetails-choice">
+                        <li class="itemDetails-choice-list">
+                          <div class="choice-block">
+                            <input id="answer1" name="question1" type="radio" class="answer-style01" checked />
+                            <label for="answer1" class="answer-text">매우 만족한다.</label>
+                            <div class="itemDetails-choice-right">
+                              <div class="number">200</div>
+                            </div>
+                          </div>
+                          <div class="percentage" style="width: 90%"></div>
+                        </li>
+                        <li class="itemDetails-choice-list">
+                          <div class="choice-block">
+                            <input id="answer2" name="question1" type="radio" class="answer-style01" />
+                            <label for="answer2" class="answer-text">Quis non amet anim sint duis enim id
+                              incididunt.</label>
+                            <div class="itemDetails-choice-right">
+                              <div class="number">30000</div>
+                            </div>
+                          </div>
+                          <div class="percentage" style="width: 10%"></div>
+                        </li>
+                        <li class="itemDetails-choice-list itemDetails-list-forUser">
+                          <div class="choice-block">
+                            <input id="answer3" name="question1" type="radio" class="answer-style01" />
+                            <label for="answer3" class="answer-text"></label>
+                            <input type="text" placeholder="설문항목을 직접 입력하세요." class="answer-forUser" />
+                            <div class="itemDetails-choice-right">
+                              <div class="number">100</div>
+                            </div>
+                          </div>
+                          <div class="percentage" style="width: 10%"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- //end of .wrap-question -->
+
+            <div class="wrap-question set-votingItemType-area">
+              <div class="question-title">
+                <p class="question-text">Question 02</p>
+                <button class="question-delete">삭제하기</button>
+              </div>
+
+              <div class="question-content">
+                <ul class="create-item">
+                  <li>
+                    <p class="create-title">타입 설정</p>
+                  </li>
+                  <li>
+                    <div class="create-radio-container">
+                      <div class="radio">
+                        <input type="radio" id="votingItemType-choice2" name="votingItemType2" class="create-radio" />
+                        <label for="votingItemType-choice2">객관식</label>
+                      </div>
+                      <div class="radio">
+                        <input type="radio" id="votingItemType-answer2" name="votingItemType2" class="create-radio" />
+                        <label for="votingItemType-answer2">주관식</label>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="set-choiceItem-area">
+                  <ul class="create-item">
+                    <li>
+                      <p class="create-title">제목 입력</p>
+                    </li>
+                    <li>
+                      <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" value="강의내용을 평가해주세요." />
+                    </li>
+                  </ul>
+
+                  <ul class="create-item">
+                    <li>
+                      <input type="text" placeholder="답변 항목을 입력하세요." value="매우 만족" class="create-input" />
+                    </li>
+                    <li>
+                      <input type="text" placeholder="답변 항목을 입력하세요." value="만족" class="create-input" />
+                    </li>
+                    <li>
+                      <input type="text" placeholder="답변 항목을 입력하세요." value="보통" class="create-input" />
+                      <button class="button-answer-delete">
+                        <i class="icon icon-answer-delete"></i>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="button-add-votingItem" data-type="text">
+                        <i class="icon icon-plus"></i>
+                      </button>
+                    </li>
+                  </ul>
+
+                  <ul class="create-item">
+                    <li>
+                      <div class="create-toggle">
+                        <p class="toggle-title">복수 선택</p>
+
+                        <input id="option-choice-multiple2" type="checkbox" class="toggle-checkbox" />
+                        <label for="option-choice-multiple2" class="toggle-switch">
+                          <div class="toggle-body"></div>
+                          <div class="toggle-head"></div>
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="create-toggle">
+                        <p class="toggle-title">직접 입력 허용</p>
+
+                        <input id="option-choice-write2" type="checkbox" class="toggle-checkbox" />
+                        <label for="option-choice-write2" class="toggle-switch">
+                          <div class="toggle-body"></div>
+                          <div class="toggle-head"></div>
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="create-toggle">
+                        <p class="toggle-title">필수 문항</p>
+
+                        <input id="option-choice-required2" type="checkbox" class="toggle-checkbox" />
+                        <label for="option-choice-required2" class="toggle-switch">
+                          <div class="toggle-body"></div>
+                          <div class="toggle-head"></div>
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="set-answerItem-area">
+                  <ul class="create-item">
+                    <li>
+                      <p class="create-title">제목 입력</p>
+                    </li>
+                    <li>
+                      <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                    </li>
+                  </ul>
+
+                  <ul class="create-item">
+                    <li>
+                      <div class="create-toggle">
+                        <p class="toggle-title">필수 문항</p>
+
+                        <input id="option-answer-required2" type="checkbox" class="toggle-checkbox" />
+                        <label for="option-answer-required2" class="toggle-switch">
+                          <div class="toggle-body"></div>
+                          <div class="toggle-head"></div>
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- //end of .wrap-question -->
+          </div>
+
+          <div class="create-buttons-container">
+            <button class="button-next">다음</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
