@@ -57,6 +57,10 @@
   }
 
   .page-title {
+    height: 100%;
+    padding-left: 5rem;
+    padding-right: 3rem;
+    @include ellipsis;
     font-size: 1.6rem;
     font-weight: $fw-m;
     color: #0c0c0c;

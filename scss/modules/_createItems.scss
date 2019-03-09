@@ -63,6 +63,7 @@
     font-size: 1.6rem;
     color: #0c0c0c;
     font-weight: $fw-m;
+    letter-spacing: -0.05rem;
   }
 
   .create-input {
@@ -96,19 +97,23 @@
     overflow: hidden;
     resize: none;
     min-height: 5rem;
-    // padding: 1.2rem 0 0.6rem;
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
     padding-left: 1.1rem;
     padding-right: 1.1rem;
     line-height: 1.88;
     font-weight: $fw-m;
+    letter-spacing: -0.05rem;
     word-break: keep-all;
+    color: #0c0c0c;
+
+    &[contenteditable="true"] {
+      color: #6e6e6e;
+    }
 
     &[contenteditable="true"]:empty:before {
       position: absolute;
       top: 50%;
-      // left: 0;
       left: 1rem;
       display: block;
       content: attr(data-placeholder);
@@ -532,7 +537,7 @@
   }
 
   .button-prev {
-    background-color: $color-lightgray2;
+    background-color: #c8c8c8;
   }
 
   .button-next {
@@ -911,70 +916,83 @@
     margin: 2rem 0 0;
   }
 
-  .create-option-info {
-    color: $color-gray;
-    background-color: pink;
-    background-color: $color-noPolls-bg;
-
-    .option-info-title {
-      height: 3rem;
-      padding: 0 2.1rem;
-      font-size: 1.2rem;
-      font-weight: $fw-b;
-      line-height: 3rem;
-      border-top: solid 1px $color-lightgray2;
-      border-bottom: solid 1px $color-lightgray2;
-    }
-
-    .option-info-container {
-      padding: 2rem 2.1rem;
-      font-size: 1.4rem;
-    }
-
-    .option-block {
-      @include flexbox;
-      @include align-items(flex-start);
-      @include justify-content(space-between);
-      @include flex-wrap(wrap);
-      margin: 0.7rem 0;
-    }
-
-    .option-setting {
-      text-align: right;
-      @include flex-grow(0);
-
-      &.active {
-        color: $color-blue;
-
-        &:before {
-          display: inline-block;
-          width: 1.2rem;
-          height: 0.9rem;
-          margin-right: 0.3rem;
-          background-image: icon(checkmark, $color-blue);
-          background-size: 100%;
-          content: "";
-        }
-      }
-
-      small {
-        display: block;
-        margin-top: 0.5rem;
-        font-size: 1.2rem;
-
-        &:first-child {
-          margin-top: 0.13rem;
-        }
-      }
-
-      &.small {
-        margin-top: 0.1rem;
-      }
-    }
-  }
-
   .create-buttons-container {
     margin-top: 0;
+  }
+}
+
+.create-option-info {
+  padding-top: 2rem;
+  color: #6e6e6e;
+  background-color: #fff;
+
+  .option-info-title {
+    height: 3rem;
+    padding: 0 2.1rem;
+    font-size: 1.2rem;
+    font-weight: $fw-b;
+    line-height: 3rem;
+    border-top: solid 1px $color-lightgray2;
+    border-bottom: solid 1px $color-lightgray2;
+    background-color: $color-noPolls-bg;
+  }
+
+  .option-info-container {
+    padding: 2rem 2.1rem;
+    font-size: 1.4rem;
+    background-color: $color-noPolls-bg;
+  }
+
+  .option-block {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+    // @include flex-wrap(wrap);
+    margin: 0.7rem 0;
+  }
+
+  .option-name {
+    @include flex-shrink(0);
+  }
+
+  .option-setting {
+    text-align: right;
+    @include flex-grow(0);
+
+    &.active {
+      color: #29ace4;
+
+      // &:before {
+      //   display: inline-block;
+      //   width: 1.2rem;
+      //   height: 0.9rem;
+      //   margin-right: 0.3rem;
+      //   background-image: icon(checkmark, $color-blue);
+      //   background-size: 100%;
+      //   content: "";
+      // }
+    }
+
+    small {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      word-break: keep-all;
+
+      &:first-child {
+        margin-top: 0.13rem;
+      }
+    }
+
+    &.small {
+      margin-top: 0.1rem;
+    }
+  }
+}
+
+.create-confirmation .question-content {
+  .create-item {
+    margin-bottom: 1rem;
   }
 }
 
@@ -1132,17 +1150,21 @@
 
   .question-title {
     position: relative;
+    @include flexbox;
+    @include justify-content(space-between);
     line-height: 3rem;
     font-weight: $fw-b;
     letter-spacing: -0.05rem;
     height: 3rem;
     font-size: 1.2rem;
     background-color: #ddeff9;
-    padding: 0 4.6rem;
+    padding-left: 4.6rem;
+    padding-right: 2rem;
+    border-bottom: 1px solid #e7e7e7;
 
     &:before {
       position: absolute;
-      top: 0.85rem;
+      top: 0.8rem;
       left: 2.2rem;
       display: block;
       width: 1.6rem;
@@ -1150,38 +1172,66 @@
       background-image: icon(question-icon, "3DADED");
       background-size: 100%;
       content: '';
+      @include pointer-none;
     }
 
     .question-text {
       height: 100%;
+      @include pointer-none;
     }
   }
 
   .question-delete {
-    position: absolute;
-    top: 0.6rem;
-    right: 1.7rem;
     font-size: 1.2rem;
     color: #0e0e0e;
     letter-spacing: -0.05rem;
   }
 
-  .question-content {
+  .question-isRequired {
+    font-size: 1.2rem;
+    color: #29ace4;
+    letter-spacing: -0.05rem;
+    @include pointer-none;
+  }
 
-    // height: 0;
+  .question-content {
+    // transition: max-height 0.3s;
+
     &>.create-item:first-of-type {
       margin-top: 0;
     }
   }
 }
 
+// 닫혔을 때
+.wrap-question.closed {
+  .question-title {
+    border-bottom-color: #acdff4;
+  }
+
+  .question-content {
+    overflow: hidden;
+    max-height: 0;
+    // transition: max-height 0.3s;
+  }
+
+}
+
 .question-container {
   padding-top: 1rem;
+
+  .wrap-question:last-child {
+
+    .question-content .create-item:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 //문항 추가하기 버튼
 .add-question {
   padding: 0 0.8rem;
+  margin-top: 1rem;
   margin-bottom: 7rem;
 
   .button-add-question {
@@ -1246,4 +1296,222 @@
   color: #ee6262;
   font-size: 1.2rem;
   margin: 0.45rem 0 0.45rem 1.2rem;
+}
+
+
+// [ .itemDetails ]
+// survey에서 추가
+// 설문 내용, 투표 항목 등
+
+.itemDetails {
+  width: 100%;
+  margin-bottom: 4rem; //3rem??
+}
+
+//생성자가 입력한 설문 질문 (최대 20자)
+.itemDetails-text {
+  padding-top: 0.8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: $fw-m;
+  line-height: 1.88;
+  letter-spacing: -0.05rem;
+}
+
+//항목 목록 위의 정보 (복수선택 가능, n명 참여 등)
+.itemDetails-topInfo {
+  @include flexbox;
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.03rem;
+
+  .participants,
+  .multiple {
+    margin-right: 1.5rem;
+
+    &:before {
+      display: inline-block;
+      content: '';
+      width: 1.6rem;
+      height: 1rem;
+      margin-right: 0.4rem;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+  }
+
+  .multiple:before {
+    background-image: icon(checkmark-multiple, "000000");
+  }
+}
+
+.itemDetails-answer {}
+
+// 각 응답 리스트 (막대기!)
+.itemDetails-answer-list {
+  position: relative;
+  // @include flexbox;
+  // @include align-items(center);
+  // @include justify-content(space-between);
+  width: 100%;
+  height: 5rem;
+  // padding: 0 1rem;
+  margin-bottom: 0.2rem;
+  background-color: #f4f4f4;
+
+  .answer-block {
+    z-index: 1;
+    // @include flexbox;
+    // @include align-items(center);
+    // @include justify-content(space-between);
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .percentage {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #e7e7e7;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
+
+  .itemDetails-answer-right {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    right: 1.8rem;
+    @include transform(translateY(-50%));
+    background-color: transparent;
+
+    .number {
+      color: #6e6e6e;
+
+      &:before {
+        display: inline-block;
+        content: '';
+        width: 1.2rem;
+        height: 1.4rem;
+        margin-right: 0.3rem;
+        background-image: icon(person, "6e6e6e");
+        background-size: 100%;
+        vertical-align: bottom;
+      }
+
+    }
+  }
+
+  .answer-forUser {
+    z-index: 30;
+    position: absolute;
+    top: 0;
+    left: 3.9rem;
+    width: calc(100% - 3.9rem);
+    height: 100%;
+    font-size: 1.4rem;
+    // padding-left: 3.9rem;
+    @include pointer-none;
+
+    @include placeholder {
+      color: #a8a8a8;
+    }
+
+    &:focus {
+      @include placeholder {
+        color: #a8a8a8 !important;
+
+      }
+    }
+  }
+}
+
+.itemDetails-list-forUser {
+
+  .answer-style01:checked+.answer-text+.answer-forUser {
+    @include pointer-auto;
+
+    @include placeholder {
+      color: #000000;
+
+    }
+  }
+
+  .answer-style01:disabled+.answer-text+.answer-forUser {
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+  }
+}
+
+
+.answer-style01 {
+
+  //기본 ui 숨기기
+  &:checked,
+  &:not(:checked) {
+    position: absolute;
+    left: -9999rem;
+  }
+
+  //답변 내용 스타일링
+  &:checked+.answer-text,
+  &:not(:checked)+.answer-text {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 4.8rem;
+    padding-left: 3.9rem;
+    padding-right: 6.5rem;
+    font-size: 1.4rem;
+    border: 1px solid #e7e7e7;
+    color: $color-black;
+    cursor: pointer;
+    @include ellipsis;
+  }
+
+  //체크 아이콘
+  &:checked+.answer-text:before,
+  &:not(:checked)+.answer-text:before {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    @include transform(translateY(-50%));
+    content: "";
+    background-image: icon(checkbox-unchecked, "000000");
+    background-size: 100%;
+  }
+
+  &:checked+.answer-text {
+    z-index: 1;
+    position: relative;
+    background-color: #93d5f1;
+    border-color: #29ace4;
+  }
+
+  &:checked+.answer-text:before {
+    background-image: icon(checkbox, "000000");
+    background-size: 100%;
+  }
+
+  // >>>> disabled 처리 (읽기 전용)
+
+  &:disabled+.answer-text {
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    cursor: auto;
+  }
+
+  &:disabled+.answer-text:before {
+    display: none;
+  }
+
 }

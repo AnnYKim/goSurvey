@@ -203,60 +203,10 @@ $(function () {
       }
     });
 
-    //이미지 첨부 버튼 클릭 이벤트
-    $(".create-poll-info .button-image-attach").on("click", function (e) {
-      e.preventDefault();
-      if (window.confirm("이미지를 등록하시겠습니까?")) {
-        alert("이미지가 등록되었습니다.");
-        $(this)
-          .parents(".create-poll-info")
-          .removeClass("init");
-        $(this)
-          .parents(".create-poll-info")
-          .find("img")
-          .attr("src", "../images/goVote/thumbnail-test.png");
-      }
-    });
-    $(".set-textItem-area .button-image-attach").on("click", function (e) {
-      e.preventDefault();
-      if (window.confirm("이미지를 등록하시겠습니까?")) {
-        alert("이미지가 등록되었습니다.");
-        $(this)
-          .parent()
-          .removeClass("init");
-        $(this)
-          .next(".image")
-          .children("img")
-          .attr("src", "../images/goVote/thumbnail-test.png");
-      }
-    });
-
-    //이미지 첨부 삭제 버튼 클릭 이벤트
-    $(".create-poll-info .button-image-delete").on("click", function (e) {
-      e.preventDefault();
-      if (window.confirm("이미지를 삭제하시겠습니까?")) {
-        alert("이미지를 삭제했습니다.");
-        $(this)
-          .parents(".create-poll-info")
-          .addClass("init");
-        $(this)
-          .parents(".create-poll-info")
-          .find("img")
-          .attr("src", "");
-      }
-    });
-    $(".set-textItem-area .button-image-delete").on("click", function (e) {
-      e.preventDefault();
-      if (window.confirm("이미지를 삭제하시겠습니까?")) {
-        alert("이미지를 삭제했습니다.");
-        $(this)
-          .parent()
-          .addClass("init");
-        $(this)
-          .next(".image")
-          .children("img")
-          .attr("src", "");
-      }
+    // Question 여닫기 (go survey 추가)
+    $(".question-title").on("click", function (e) {
+      var x = e.target.parentNode;
+      x.classList.contains("closed") ? x.classList.remove("closed") : x.classList.add("closed");
     });
 
     //voters-list-delete 이벤트
