@@ -1,0 +1,559 @@
+@charset "utf-8";
+
+// **** Input style
+
+////////// Input //////////
+.input-item {
+  //각각의 input 묶음
+  position: relative;
+  @include flexbox;
+  @include flex-direction(column);
+  padding-top: 3rem;
+  background-color: #fff;
+
+  &:first-child {
+    // padding-top: 0;
+  }
+
+  &.input-row {
+    @include flex-direction(row);
+    @include justify-content(space-between);
+  }
+
+  .input-title {
+    //각 인풋의 타이틀 (ex. 학부/학과)
+    margin-bottom: 1.2rem;
+    padding: 0 2.1rem 0 1.9rem;
+    font-size: 1.4rem;
+    font-weight: $fw-m;
+    color: $color-black;
+  }
+
+  .input-item-error {
+    //인풋 아이템 내 에러 메시지
+    display: none;
+    margin-top: 0.4rem;
+    margin-left: 1rem;
+    // position: absolute;
+    // right: 0;
+    // bottom: -2rem;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.input-style01 {
+  width: 100%;
+  height: 4rem;
+  padding: 0 3rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ebebee;
+
+  @include placeholder {
+    font-size: 1.5rem;
+    font-weight: $fw-r;
+    color: #a2b0c1;
+  }
+}
+
+.input-style03 {
+  height: 4rem;
+  padding: 0 1rem;
+  line-height: 4rem;
+  font-size: 1.4rem;
+  border-radius: 0.8rem;
+  background-color: $color-input;
+  color: $color-input-text;
+
+  @include placeholder {
+    color: #8592a2;
+    font-size: 1.4rem;
+  }
+}
+
+.input-style02 {
+  @extend .input-style01;
+
+  @include placeholder {
+    color: $color-placeholder2;
+  }
+}
+
+.input-hidden {
+  //숨김 처리
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  // outline: 4px solid gold;
+}
+
+.input-style04 {
+  @extend .input-style03;
+  padding: 0 1.9rem;
+  font-weight: $fw-r;
+  background-color: #f2f4f7;
+  -webkit-text-fill-color: #000;
+  border-radius: 0;
+  @include ellipsis;
+  padding-right: 4rem;
+
+  @include placeholder {
+    -webkit-text-fill-color: #a2b0c1;
+    font-weight: $fw-r;
+  }
+
+  &[type="password"] {
+    @include placeholder {
+      -webkit-text-fill-color: #a2b0c1;
+      font-weight: $fw-r;
+    }
+  }
+}
+
+.search-box {
+  position: relative;
+  @include ellipsis;
+  width: 100%;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  font-size: 1.6rem;
+  padding-left: 5.1rem;
+  padding-right: 4.8rem;
+  text-align: left;
+  color: #2c496a;
+  font-weight: $fw-m;
+  background-color: #f2f4f7;
+
+  @include placeholder {
+    color: #899aab;
+    font-weight: $fw-r;
+  }
+}
+
+////////// Radio //////////
+
+.radio-wrap {
+  //라디오 묶음 (type 01)
+  @include flexbox;
+  @include align-items(center);
+  @include flex-direction(column);
+
+  .radio-item {
+    @include flexbox;
+    @include align-items(center);
+    //@include flex-basis(100%); //킷캣버전에서 레이아웃 무너짐
+    flex-shrink: 0;
+    width: 100%;
+    height: 4rem;
+    border-bottom: solid 1px #ebebee;
+  }
+
+  input[type="radio"] {
+    overflow: hidden;
+    position: absolute;
+    left: -999px;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+
+    &[readonly]+label {
+      @include select-none;
+      @include pointer-none;
+    }
+  }
+
+  .radio-label {
+    cursor: pointer;
+  }
+
+  .radio-style01+.radio-label {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.5rem;
+    color: #000;
+    padding: 0 3rem;
+    font-weight: $fw-r;
+    border-bottom: 1px solid transparent;
+
+    &:before,
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 3.2rem;
+      @include transform(translateY(-50%));
+    }
+
+    &:before {
+      width: 1.9rem;
+      height: 1.9rem;
+      border: 1px solid #a2b0c1;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+
+    &:after {
+      display: none;
+      width: 0.65rem;
+      height: 0.65rem;
+      right: 3.85rem;
+      border: 1px solid #30b9d3;
+      background-color: #30b9d3;
+      border-radius: 50%;
+    }
+  }
+
+  .radio-style01:checked:not(:disabled)+.radio-label {
+    background-color: #f1f4f4;
+    border-bottom: 1px solid #ebebee;
+
+    &:before {
+      border-color: #30b9d3;
+    }
+
+    &:after {
+      display: block;
+    }
+  }
+
+  .radio-style01[readonly]+.radio-label,
+  .radio-style01:checked[readonly]+.radio-label {
+    color: #93a2b6;
+
+    &:before {
+      border: 1px solid #a2b0c1;
+    }
+
+    &:after {
+      border: 1px solid #a2b0c1;
+      background-color: #a2b0c1;
+    }
+  }
+
+  .radio-style01:checked[readonly]+.radio-label {
+    background-color: #f2f4f7;
+  }
+
+  .radio-style02+.radio-label {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2c496a;
+    font-weight: $fw-r;
+    border: 1px solid #a2b0c1;
+    border-left: none;
+  }
+
+  .radio-style02:checked:not(:disabled)+.radio-label {
+    color: #fff;
+    background-color: #30b9d3;
+    border-color: #30b9d3;
+  }
+
+  .radio-style02[readonly]+.radio-label {
+    color: #a2b0c1;
+    border-color: #a2b0c1;
+  }
+
+  .radio-style02:checked[readonly]+.radio-label {
+    background-color: #a2b0c1;
+    border-color: #a2b0c1;
+  }
+}
+
+.radio-wrap.radio-item-4 {
+  //라디오 아이템이 4개인 경우
+  @include flexbox;
+  @include align-items(center);
+  @include flex-direction(row);
+  padding-left: 2.1rem;
+
+  .radio-item {
+    flex-basis: 8rem;
+    width: 8rem;
+    height: 4rem;
+    line-height: 4rem;
+    border-bottom: none;
+
+    &:first-child {
+      .radio-label {
+        border-left: 1px solid #a2b0c1;
+      }
+    }
+  }
+}
+
+////////// Select //////////
+.select-item {
+  position: relative;
+
+  .input-select-ui {
+    cursor: pointer;
+  }
+
+  .input-select-ui:valid {
+    -webkit-text-fill-color: $color-black !important;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.4rem;
+  }
+
+  &.active {
+    .selectbox {
+      display: block;
+    }
+  }
+}
+
+.select-float {
+  [class^="selectbox-style"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.select-hidden {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+}
+
+.select-style01 {
+  .input-select-ui {
+    padding-right: 5rem;
+    @extend .input-style01;
+    -webkit-text-fill-color: $color-navy;
+
+    @include placeholder {
+      -webkit-text-fill-color: $color-placeholder;
+    }
+  }
+
+  .icon {
+    top: 0.7rem;
+    right: 2.3rem;
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  //활성화 시, 화살표 아이콘 변경
+  &.active {
+    .icon-select01 {
+      background-image: icon(select-active, "a8b6c8");
+    }
+
+    .icon-select02 {
+      background-image: icon(select-active, "b1c0cf");
+    }
+  }
+}
+
+.select-style02 {
+  .input-select-ui {
+    @extend .input-style02;
+    -webkit-text-fill-color: $color-navy;
+
+    @include placeholder {
+      -webkit-text-fill-color: $color-placeholder2;
+    }
+  }
+
+  //활성화 시, 화살표 아이콘 변경
+  &.active {
+    .icon-select02 {
+      background-image: icon(select-active, "b1c0cf");
+    }
+  }
+}
+
+.select-style03 {
+  .input-select-ui {
+    @extend .input-style03;
+    -webkit-text-fill-color: $color-navy;
+
+    @include placeholder {
+      -webkit-text-fill-color: #8592a2;
+    }
+  }
+
+  //활성화 시, 화살표 아이콘 변경
+  &.active {
+    .icon-select02 {
+      background-image: icon(select-active, "b1c0cf");
+    }
+  }
+}
+
+.select-style04 {
+  .input-select-ui {
+    @extend .input-style04;
+  }
+
+  .icon {
+    top: 0.5rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  //활성화 시, 화살표 아이콘 변경
+  &.active {
+    .icon-select02 {
+      background-image: icon(select-active, "b1c0cf");
+    }
+  }
+
+  &.select-float {
+    [class^="selectbox-style"] {
+      top: 3.8rem;
+      left: 1.9rem;
+    }
+  }
+}
+
+////////// Select - sorting  //////////
+.sorting-item {
+  position: relative;
+
+  .input-sorting-ui {
+    display: inline-block;
+    position: relative;
+    min-width: 6rem; //TODO: 수정필요
+    font-size: 1.3rem; //TODO: 수정필요
+    padding-right: 2.5rem; //TODO: 수정필요
+  }
+
+  .icon {
+    position: absolute;
+    top: 0.1rem;
+    right: 0rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: salmon; //TODO: 수정필요
+
+    &.active {
+      background: gold; //TODO: 수정필요
+    }
+  }
+}
+
+////////// disable //////////
+
+.input-item.disable {
+  @include select-none;
+  @include pointer-none;
+
+  .input-title,
+  .radio-label,
+  input {
+    color: $color-disable;
+  }
+
+  .radio-label:before,
+  .radio-label:after {
+    border-color: $color-disable;
+  }
+
+  input {
+    @include placeholder {
+      -webkit-text-fill-color: $color-disable;
+    }
+  }
+}
+
+////////// checkbox item //////////
+.checkbox-item {
+  margin-bottom: 0.2rem;
+}
+
+.checkbox-style01 {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include align-items(center);
+  padding: 0 1.8rem;
+  height: 5rem;
+  background-color: #fff;
+
+  .checkbox-title {
+    color: #000;
+    font-size: 1.6rem;
+    font-weight: $fw-m;
+    @include flex-shrink(0);
+  }
+
+  input[type="checkbox"] {
+
+    &:checked,
+    &:not(:checked) {
+      //기본 체크박스 ui 숨기기
+      position: absolute;
+      left: -9999rem;
+    }
+  }
+
+  input[type="checkbox"]+.checkbox-label {
+    position: relative;
+    width: 4rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: rgba(162, 176, 193, 0.3);
+
+    &:before {
+      position: absolute;
+      top: -0.4rem;
+      left: 0;
+      display: block;
+      width: 2.2rem;
+      height: 2.2rem;
+      background-color: #98a7b9;
+      border-radius: 50%;
+      content: "";
+      transition: transform 0.5s, background-color 0.5s;
+    }
+  }
+
+  input[type="checkbox"]:checked:not(:disabled)+.checkbox-label {
+    &:before {
+      @include transform(translateX(2rem));
+      transition: transform 0.5s, background-color 0.5s;
+      background-color: #30b9d3;
+    }
+  }
+
+  input[type="checkbox"][readonly]+.checkbox-label {
+    @include pointer-none;
+    @include select-none;
+    opacity: 0.7;
+
+    &:before {
+      background-color: #aaa !important;
+    }
+  }
+}
+
+/*
+
+    width: 4rem;
+    height: 1.8rem;
+    border-radius: 1rem;
+    background-color: rgba(162, 176, 193, 0.3);
+    
+    
+*/

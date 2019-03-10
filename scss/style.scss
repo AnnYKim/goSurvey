@@ -2,27 +2,27 @@
 
 /*! style.css */
 
-@import "helpers/variables";
-@import "helpers/mixins";
-@import "helpers/mediaQueries";
+@import "helpers/goSurvey/variables_gs";
+@import "helpers/goSurvey/mixins_gs";
+@import "helpers/goSurvey/mediaQueries_gs";
 
 @import "base/font";
 @import "base/reset";
-@import "base/common";
-@import "base/svg";
+@import "base/goSurvey/common_gs";
+@import "base/goSurvey/svg_gs";
 @import "base/icon";
 
-@import "modules/fab";
-@import "modules/tabmenu";
-@import "modules/searchbox";
-@import "modules/filter";
-@import "modules/pollList";
-@import "modules/createProcess";
-@import "modules/dropdown";
-@import "modules/createItems";
+@import "modules/goSurvey/fab";
+@import "modules/goSurvey/tabmenu";
+@import "modules/goSurvey/searchbox";
+@import "modules/goSurvey/filter";
+@import "modules/goSurvey/pollList";
+@import "modules/goSurvey/createProcess";
+@import "modules/goSurvey/dropdown";
+@import "modules/goSurvey/createItems";
 
-@import "layout/mainView";
-@import "layout/searchView";
-@import "layout/createView";
-@import "layout/takeView";
-@import "layout/detailView";
+@import "layout/goSurvey/mainView";
+@import "layout/goSurvey/searchView";
+@import "layout/goSurvey/createView";
+@import "layout/goSurvey/takeView";
+@import "layout/goSurvey/detailView";

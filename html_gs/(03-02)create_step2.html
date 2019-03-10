@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>go survey</title>
+
+  <link type="text/css" rel="stylesheet" href="../css/style.css" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <meta name="format-detection" content="telephone=no, address=no, email=no" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="../js/test.js"></script>
+  <!--
+    [전달사항]
+    이벤트 확인용 js입니다.
+  -->
+</head>
+
+<body class="body-create">
+  <!-- 설문 생성 화면 (2단계) -->
+
+  <div id="wrapper" class="create">
+    <div class="page-top">
+
+      <div class="page-header">
+        <div class="page-header-left">
+          <button class="icon-container"><i class="icon icon-close"></i></button>
+        </div>
+        <h1 class="page-title">
+          설문 생성
+        </h1>
+      </div>
+
+      <div class="create-process active-2">
+        <!--
+          [전달사항] 활성화된 순서에 따라 create-process에
+          active-1, active-2, active-3, active-4 클래스를 각각 추가해주세요.
+        -->
+        <div class="process-level">
+          <span class="text">설문 정보 입력</span>
+        </div>
+        <div class="process-level">
+          <span class="text">설문 문항 작성</span>
+        </div>
+        <div class="process-level">
+          <span class="text">설문 대상 설정</span>
+        </div>
+        <div class="process-level">
+          <span class="text">작성 정보 확인</span>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="page-body">
+
+      <div class="create-item-container">
+
+        <div class="question-container">
+
+          <div class="wrap-question set-votingItemType-area type-choice">
+            <!--
+            [전달사항] <test.js에서 확인 가능>
+            - 객관식 타입일 때: .set-votingItemType-area에 type-choice 클래스 추가 && type-answer 클래스 제거
+            - 주관식 타입일 때: .set-votingItemType-area에 type-answer 클래스 추가 && type-choice 클래스 제거
+            -->
+
+            <div class="question-title">
+              <p class="question-text">Question 01</p>
+            </div>
+
+            <div class="question-content">
+
+              <ul class="create-item">
+                <li>
+                  <p class="create-title">타입 설정</p>
+                </li>
+                <li>
+                  <div class="create-radio-container">
+                    <div class="radio">
+                      <input type="radio" id="votingItemType-choice1" name="votingItemType1" class="create-radio"
+                        checked />
+                      <label for="votingItemType-choice1">객관식</label>
+                    </div>
+                    <div class="radio">
+                      <input type="radio" id="votingItemType-answer1" name="votingItemType1" class="create-radio" />
+                      <label for="votingItemType-answer1">주관식</label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="set-choiceItem-area">
+                <ul class="create-item">
+                  <li>
+                    <p class="create-title">제목 입력</p>
+                  </li>
+                  <li class="create-error">
+                    <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                  </li>
+                </ul>
+
+                <ul class="create-item">
+                  <li>
+                    <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
+                  </li>
+                  <li class="create-error">
+                    <!--
+                      [전달사항] 에러가 난 경우 .create-errror를 붙여주세요.
+                    -->
+                    <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
+                  </li>
+                  <li class="create-error">
+                    <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
+                    <button class="button-answer-delete"><i class="icon icon-answer-delete"></i></button>
+                  </li>
+                  <li>
+                    <button class="button-add-votingItem" data-type="text">
+                      <i class="icon icon-plus"></i>
+                    </button>
+                  </li>
+                </ul>
+
+                <ul class="create-item">
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">복수 선택</p>
+
+                      <input id="option-choice-multiple1" type="checkbox" class="toggle-checkbox" checked />
+                      <label for="option-choice-multiple1" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                    <!-- [전달사항] checkbox가 checked 된 상태일 때 활성화된 ui로 바뀝니다.  -->
+                  </li>
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">직접 입력 허용</p>
+
+                      <input id="option-choice-write1" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-choice-write1" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">필수 문항</p>
+                      <input id="option-choice-required1" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-choice-required1" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+
+              <div class="set-answerItem-area">
+                <ul class="create-item">
+                  <li>
+                    <p class="create-title">제목 입력</p>
+                  </li>
+                  <li>
+                    <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" value="강의계획서대로 잘 진행되었나요?" />
+                  </li>
+                </ul>
+
+                <ul class="create-item">
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">필수 문항</p>
+
+                      <input id="option-answer-required1" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-answer-required1" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          <!-- //end of .wrap-question -->
+
+          <div class="wrap-question set-votingItemType-area">
+
+            <div class="question-title">
+              <p class="question-text">Question 02</p>
+              <button class="question-delete">삭제하기</button>
+            </div>
+
+            <div class="question-content">
+
+              <ul class="create-item">
+                <li>
+                  <p class="create-title">타입 설정</p>
+                </li>
+                <li>
+                  <div class="create-radio-container">
+                    <div class="radio">
+                      <input type="radio" id="votingItemType-choice2" name="votingItemType2" class="create-radio" />
+                      <label for="votingItemType-choice2">객관식</label>
+                    </div>
+                    <div class="radio">
+                      <input type="radio" id="votingItemType-answer2" name="votingItemType2" class="create-radio" />
+                      <label for="votingItemType-answer2">주관식</label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="set-choiceItem-area">
+                <ul class="create-item">
+                  <li>
+                    <p class="create-title">제목 입력</p>
+                  </li>
+                  <li>
+                    <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" value="강의내용을 평가해주세요." />
+                  </li>
+                </ul>
+
+                <ul class="create-item">
+                  <li>
+                    <input type="text" placeholder="답변 항목을 입력하세요." value="매우 만족" class="create-input" />
+                  </li>
+                  <li>
+                    <input type="text" placeholder="답변 항목을 입력하세요." value="만족" class="create-input" />
+                  </li>
+                  <li>
+                    <input type="text" placeholder="답변 항목을 입력하세요." value="보통" class="create-input" />
+                    <button class="button-answer-delete"><i class="icon icon-answer-delete"></i></button>
+                  </li>
+                  <li>
+                    <button class="button-add-votingItem" data-type="text">
+                      <i class="icon icon-plus"></i>
+                    </button>
+                  </li>
+                </ul>
+
+                <ul class="create-item">
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">복수 선택</p>
+
+                      <input id="option-choice-multiple2" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-choice-multiple2" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">직접 입력 허용</p>
+
+                      <input id="option-choice-write2" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-choice-write2" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">필수 문항</p>
+
+                      <input id="option-choice-required2" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-choice-required2" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+
+              <div class="set-answerItem-area">
+                <ul class="create-item">
+                  <li>
+                    <p class="create-title">제목 입력</p>
+                  </li>
+                  <li>
+                    <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                  </li>
+                </ul>
+
+                <ul class="create-item">
+                  <li>
+                    <div class="create-toggle">
+                      <p class="toggle-title">필수 문항</p>
+
+                      <input id="option-answer-required2" type="checkbox" class="toggle-checkbox" />
+                      <label for="option-answer-required2" class="toggle-switch">
+                        <div class="toggle-body"></div>
+                        <div class="toggle-head"></div>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          <!-- //end of .wrap-question -->
+        </div>
+
+        <div class="add-question">
+          <button class="button-add-question"><span>문항 추가하기</span></button>
+        </div>
+
+        <div class="create-buttons-container">
+          <button class="button-prev">이전</button>
+          <button class="button-next">다음</button>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</body>

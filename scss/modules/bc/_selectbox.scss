@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+// **** Selectbox style
+
+.selectbox {
+  display: none;
+  z-index: $z-selectbox;
+  width: 100%;
+  margin: 0.9rem auto 0;
+  background-color: #fff;
+  border: 1px solid $color-blue;
+  border-radius: 0.4rem;
+  max-height: 20.1rem;
+  overflow-y: auto;
+
+  &.active {
+    display: block;
+  }
+
+  ///////////////
+  //태블릿대응
+
+  @media only screen and (min-width: 920px) {
+    & {
+      max-height: 19.7rem;
+    }
+  }
+
+  .selectbox-item {
+    // margin-top: 2px;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.4rem;
+    font-weight: $fw-r;
+    color: $color-navy;
+    border-bottom: 1px solid $color-blue;
+    box-sizing: border-box;
+    @include ellipsis;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    & > button {
+      text-align: left;
+      padding: 0 1.1rem;
+      font-weight: $fw-r;
+      display: block;
+      width: 100%;
+      height: 100%;
+      @include ellipsis;
+      -webkit-tap-highlight-color: transparent;
+
+      &:active,
+      &:focus {
+        background-color: #e7f7fa;
+      }
+    }
+  }
+}
+
+.selectbox-style02 {
+  @extend .selectbox;
+  width: 90%;
+}
+
+.selectbox-style04 {
+  // signup page 전용
+  @extend .selectbox;
+}
