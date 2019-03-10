@@ -15,6 +15,10 @@
     }
   }
 
+  .poll-info-top {
+    position: relative;
+  }
+
   .poll-title {
     //투표 이름
     width: 100%;
@@ -142,5 +146,13 @@
     .poll-icon {
       @include bgi("icon-postech-gray");
     }
+  }
+
+  .poll-graph {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.5rem;
+    background-color: #83cbf4;
   }
 }

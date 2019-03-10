@@ -534,6 +534,12 @@
     height: 100%;
     font-size: 1.6rem;
     text-align: center;
+
+    &:disabled,
+    [disabled] {
+      color: #b3b3b3;
+      background-color: #dfdfdf;
+    }
   }
 
   .button-prev {
@@ -728,6 +734,11 @@
         padding: 0 1.1rem;
         font-size: 1.4rem;
         line-height: 5rem;
+
+        &:disabled,
+        [disabled] {
+          color: #aaa;
+        }
       }
     }
 
