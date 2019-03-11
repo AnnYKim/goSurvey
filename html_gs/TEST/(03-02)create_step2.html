@@ -22,13 +22,11 @@
     이벤트 확인용 js입니다.
   -->
 </head>
-</head>
 
 <body class="body-create">
-
+  <!-- 설문 생성 화면 (2단계) -->
 
   <div id="wrapper" class="create">
-
     <div class="page-top">
 
       <div class="page-header">
@@ -61,14 +59,33 @@
 
 
     </div>
-    <!-- //end of .page-top -->
 
+    <script>
+      function SimpleList() {
+const containerSelector = "#draggable-list .StackedList";
+    const containers = document.querySelectorAll(containerSelector);
+
+    if (containers.length === 0) {
+      return false;
+    }
+    new Draggable.Sortable(containers, {
+      draggable: ".StackedListItem--isDraggable",
+      mirror: {
+        appendTo: containerSelector,
+        constrainDimensions: true
+      }
+    });
+  }
+
+  SimpleList();
+</script>
 
     <div class="page-body">
 
       <div class="create-item-container">
 
-        <section id="SimpleList" class="SimpleList">
+
+        <div id="draggable-list">
           <ul class="StackedList StackedList--hasScroll" tabindex="0">
             <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item1" tabindex="1">
               <div class="StackedListContent">
@@ -91,90 +108,88 @@
                       </li>
                       <li>
                         <div class="create-radio-container">
-                          <form>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-choice1" name="votingItemType1" class="create-radio"
-                                checked />
-                              <label for="votingItemType-choice1">객관식</label>
-                            </div>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-answer1" name="votingItemType1" class="create-radio" />
-                              <label for="votingItemType-answer1">주관식</label>
-                            </div>
-                          </form>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-choice1" name="votingItemType1" class="create-radio"
+                              checked />
+                            <label for="votingItemType-choice1">객관식</label>
+                          </div>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-answer1" name="votingItemType1" class="create-radio" />
+                            <label for="votingItemType-answer1">주관식</label>
+                          </div>
                         </div>
                       </li>
                     </ul>
-                    <form>
-                      <div class="set-choiceItem-area">
-                        <ul class="create-item">
-                          <li>
-                            <p class="create-title">제목 입력</p>
-                          </li>
-                          <li class="create-error">
-                            <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
-                          </li>
-                        </ul>
 
-                        <ul class="create-item">
-                          <li>
-                            <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
-                          </li>
-                          <li class="create-error">
-                            <!--
+                    <div class="set-choiceItem-area">
+                      <ul class="create-item">
+                        <li>
+                          <p class="create-title">제목 입력</p>
+                        </li>
+                        <li class="create-error">
+                          <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                        </li>
+                      </ul>
+
+                      <ul class="create-item">
+                        <li>
+                          <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
+                        </li>
+                        <li class="create-error">
+                          <!--
                       [전달사항] 에러가 난 경우 .create-errror를 붙여주세요.
                     -->
-                            <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
-                          </li>
-                          <li class="create-error">
-                            <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
-                            <button class="button-answer-delete"><i class="icon icon-answer-delete"></i></button>
-                          </li>
-                          <li>
-                            <button class="button-add-votingItem" data-type="text">
-                              <i class="icon icon-plus"></i>
-                            </button>
-                          </li>
-                        </ul>
+                          <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
+                        </li>
+                        <li class="create-error">
+                          <input type="text" placeholder="답변 항목을 입력하세요." value="" class="create-input" />
+                          <button class="button-answer-delete"><i class="icon icon-answer-delete"></i></button>
+                        </li>
+                        <li>
+                          <button class="button-add-votingItem" data-type="text">
+                            <i class="icon icon-plus"></i>
+                          </button>
+                        </li>
+                      </ul>
 
-                        <ul class="create-item">
-                          <li>
-                            <div class="create-toggle">
-                              <p class="toggle-title">복수 선택</p>
+                      <ul class="create-item">
+                        <li>
+                          <div class="create-toggle">
+                            <p class="toggle-title">복수 선택</p>
 
-                              <input id="option-choice-multiple1" type="checkbox" class="toggle-checkbox" checked />
-                              <label for="option-choice-multiple1" class="toggle-switch">
-                                <div class="toggle-body"></div>
-                                <div class="toggle-head"></div>
-                              </label>
-                            </div>
-                            <!-- [전달사항] checkbox가 checked 된 상태일 때 활성화된 ui로 바뀝니다.  -->
-                          </li>
-                          <li>
-                            <div class="create-toggle">
-                              <p class="toggle-title">직접 입력 허용</p>
+                            <input id="option-choice-multiple1" type="checkbox" class="toggle-checkbox" checked />
+                            <label for="option-choice-multiple1" class="toggle-switch">
+                              <div class="toggle-body"></div>
+                              <div class="toggle-head"></div>
+                            </label>
+                          </div>
+                          <!-- [전달사항] checkbox가 checked 된 상태일 때 활성화된 ui로 바뀝니다.  -->
+                        </li>
+                        <li>
+                          <div class="create-toggle">
+                            <p class="toggle-title">직접 입력 허용</p>
 
-                              <input id="option-choice-write1" type="checkbox" class="toggle-checkbox" />
-                              <label for="option-choice-write1" class="toggle-switch">
-                                <div class="toggle-body"></div>
-                                <div class="toggle-head"></div>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="create-toggle">
-                              <p class="toggle-title">필수 문항</p>
-                              <input id="option-choice-required1" type="checkbox" class="toggle-checkbox" />
-                              <label for="option-choice-required1" class="toggle-switch">
-                                <div class="toggle-body"></div>
-                                <div class="toggle-head"></div>
-                              </label>
-                            </div>
-                          </li>
-                        </ul>
+                            <input id="option-choice-write1" type="checkbox" class="toggle-checkbox" />
+                            <label for="option-choice-write1" class="toggle-switch">
+                              <div class="toggle-body"></div>
+                              <div class="toggle-head"></div>
+                            </label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="create-toggle">
+                            <p class="toggle-title">필수 문항</p>
+                            <input id="option-choice-required1" type="checkbox" class="toggle-checkbox" />
+                            <label for="option-choice-required1" class="toggle-switch">
+                              <div class="toggle-body"></div>
+                              <div class="toggle-head"></div>
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
 
-                      </div>
-                    </form>
+                    </div>
+
                     <div class="set-answerItem-area">
                       <ul class="create-item">
                         <li>
@@ -202,13 +217,11 @@
                     </div>
                   </div>
                 </div>
-                <!-- //end of .wrap-question -->
-                <div class="draggable-bg"></div>
               </div>
             </li>
             <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item2" tabindex="1">
               <div class="StackedListContent">
-                <div class="wrap-question set-votingItemType-area closed">
+                <div class="wrap-question set-votingItemType-area">
 
                   <div class="question-title">
                     <p class="question-text">Question 02</p>
@@ -329,10 +342,8 @@
 
                     </div>
                   </div>
-
                 </div>
                 <!-- //end of .wrap-question -->
-                <div class="draggable-bg"></div>
               </div>
             </li>
             <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item3" tabindex="1">
@@ -434,7 +445,7 @@
                           <p class="create-title">제목 입력</p>
                         </li>
                         <li>
-                          <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                          <input type="text" placeholder="" class="create-input" />
                         </li>
                       </ul>
 
@@ -456,20 +467,17 @@
                   </div>
                 </div>
                 <!-- //end of .wrap-question -->
-                <div class="draggable-bg"></div>
               </div>
             </li>
             <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item4" tabindex="1">
               <div class="StackedListContent">
-                <h2>
-                  >>>>>>>>>>>> Drag & Sort Me!! (드래그 테스트용이니 지워주세요)
-                </h2>
+                <h2>테스트 항목~_~</h2>
               </div>
             </li>
 
           </ul>
-        </section>
-        <!-- //end of #SimpleList -->
+        </div>
+
 
 
         <div class="add-question">
@@ -482,47 +490,10 @@
           <!-- [전달사항] 필요 시 disabled 처리해주세요. -->
         </div>
 
-
       </div>
+
     </div>
-    <!-- //end of .page-body -->
+
 
   </div>
-
-
 </body>
-<script>
-  /*
-    19.03.11 추가
-    drag and sort 기능 라이브러리입니다.
-    (https://github.com/Shopify/draggable/tree/master/src/Sortable)
-  */
-  function SimpleList() {
-    const containerSelector = "#SimpleList .StackedList";
-    const containers = document.querySelectorAll(containerSelector);
-
-    if (containers.length === 0) {
-      return false;
-    }
-    var sortable = new Draggable.Sortable(containers, {
-      draggable: ".StackedListItem--isDraggable",
-      mirror: {
-        appendTo: containerSelector,
-        constrainDimensions: true
-      }
-    });
-
-    sortable.on('sortable:start', function () {
-      console.log("Start!")
-    });
-    sortable.on('sortable:stop', function () {
-      console.log("Stop!")
-    });
-
-  }
-
-  SimpleList();
-</script>
-
-
-</html>

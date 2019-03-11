@@ -254,6 +254,11 @@
     @include flexbox;
     @include align-items(center);
 
+    form {
+      @include flexbox;
+      @include align-items(center);
+    }
+
     .radio {
       margin-left: 2.8rem;
 

@@ -1,27 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
-  <title>go survey</title>
-
-  <link type="text/css" rel="stylesheet" href="../css/style.css" />
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-  <meta name="format-detection" content="telephone=no, address=no, email=no" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link type="text/css" rel="stylesheet" href="../css/style.css" />
   <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
-  <script type="text/javascript" src="../js/test.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/sortable.js"></script>
-  <!--
-    [전달사항]
-    이벤트 확인용 js입니다.
-  -->
-</head>
+  <style>
+
+    .StackedListContent {
+  position: relative;
+}
+
+.StackedListItem--isDraggable.draggable-mirror .StackedListContent {
+z-index: 999;
+transform: scale(1.11);
+box-shadow: 0px 4px 30px rgba(158, 158, 158, 0.7);
+background: #f4f4f4;
+animation: shake 0.5s ease-in-out infinite;
+backface-visibility: hidden;
+perspective: 1000px;
+}
+
+.draggable-bg{
+display: none;
+position: absolute;
+top: 0;
+left:0;
+width: 100%;
+height: 100%;
+content: "";
+pointer-events: none;
+user-select: none;
+background: rgba(151, 151, 151, 0.3);
+background-image: url(../images/dash.png);
+opacity: 0.45;
+}
+
+.StackedListItem--isDraggable.draggable-source--is-dragging .StackedListContent .draggable-bg {
+display: block;
+}
+
+@keyframes shake {
+  0% { -webkit-transform: translate(0px, 0px) }
+  50% { -webkit-transform: translate(10px, 0px) }
+  100% { -webkit-transform: translate(0px, -0px)  }
+}
+
+</style>
 </head>
 
 <body class="body-create">
@@ -85,23 +115,37 @@
 
                   <div class="question-content">
 
+                    <style>
+                      .test {
+                        width: 100px;
+                        height: 100px;
+                        background:pink;
+                      }  
+
+                      .test:checked {
+                        outline: 3px solid red;
+                      }
+                    </style>
+                    <form id="formTest">
+                      <label for="">라디오 <input class="test" type="radio" name="test1" /></label>
+                      <label for="">라디오 <input class="test" type="radio" name="test1" /></label>
+
+                    </form>
+
                     <ul class="create-item">
                       <li>
                         <p class="create-title">타입 설정</p>
                       </li>
                       <li>
                         <div class="create-radio-container">
-                          <form>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-choice1" name="votingItemType1" class="create-radio"
-                                checked />
-                              <label for="votingItemType-choice1">객관식</label>
-                            </div>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-answer1" name="votingItemType1" class="create-radio" />
-                              <label for="votingItemType-answer1">주관식</label>
-                            </div>
-                          </form>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-choice1" name="votingItemType1" class="create-radio" />
+                            <label for="votingItemType-choice1">객관식</label>
+                          </div>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-answer1" name="votingItemType1" class="create-radio" />
+                            <label for="votingItemType-answer1">주관식</label>
+                          </div>
                         </div>
                       </li>
                     </ul>
@@ -223,16 +267,14 @@
                       </li>
                       <li>
                         <div class="create-radio-container">
-                          <form>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-choice2" name="votingItemType2" class="create-radio" />
-                              <label for="votingItemType-choice2">객관식</label>
-                            </div>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-answer2" name="votingItemType2" class="create-radio" />
-                              <label for="votingItemType-answer2">주관식</label>
-                            </div>
-                          </form>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-choice2" name="votingItemType2" class="create-radio" />
+                            <label for="votingItemType-choice2">객관식</label>
+                          </div>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-answer2" name="votingItemType2" class="create-radio" />
+                            <label for="votingItemType-answer2">주관식</label>
+                          </div>
                         </div>
                       </li>
                     </ul>
@@ -337,7 +379,7 @@
             </li>
             <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item3" tabindex="1">
               <div class="StackedListContent">
-                <div class="wrap-question set-votingItemType-area">
+                <div class="wrap-question set-votingItemType-area closed">
 
                   <div class="question-title">
                     <p class="question-text">Question 03</p>
@@ -352,16 +394,14 @@
                       </li>
                       <li>
                         <div class="create-radio-container">
-                          <form>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-choice3" name="votingItemType3" class="create-radio" />
-                              <label for="votingItemType-choice3">객관식</label>
-                            </div>
-                            <div class="radio">
-                              <input type="radio" id="votingItemType-answer3" name="votingItemType3" class="create-radio" />
-                              <label for="votingItemType-answer3">주관식</label>
-                            </div>
-                          </form>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-choice2" name="votingItemType2" class="create-radio" />
+                            <label for="votingItemType-choice2">객관식</label>
+                          </div>
+                          <div class="radio">
+                            <input type="radio" id="votingItemType-answer2" name="votingItemType2" class="create-radio" />
+                            <label for="votingItemType-answer2">주관식</label>
+                          </div>
                         </div>
                       </li>
                     </ul>
@@ -372,7 +412,7 @@
                           <p class="create-title">제목 입력</p>
                         </li>
                         <li>
-                          <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                          <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" value="" />
                         </li>
                       </ul>
 
@@ -395,8 +435,8 @@
                           <div class="create-toggle">
                             <p class="toggle-title">복수 선택</p>
 
-                            <input id="option-choice-multiple3" type="checkbox" class="toggle-checkbox" />
-                            <label for="option-choice-multiple3" class="toggle-switch">
+                            <input id="option-choice-multiple2" type="checkbox" class="toggle-checkbox" />
+                            <label for="option-choice-multiple2" class="toggle-switch">
                               <div class="toggle-body"></div>
                               <div class="toggle-head"></div>
                             </label>
@@ -406,8 +446,8 @@
                           <div class="create-toggle">
                             <p class="toggle-title">직접 입력 허용</p>
 
-                            <input id="option-choice-write3" type="checkbox" class="toggle-checkbox" />
-                            <label for="option-choice-write3" class="toggle-switch">
+                            <input id="option-choice-write2" type="checkbox" class="toggle-checkbox" />
+                            <label for="option-choice-write2" class="toggle-switch">
                               <div class="toggle-body"></div>
                               <div class="toggle-head"></div>
                             </label>
@@ -417,8 +457,8 @@
                           <div class="create-toggle">
                             <p class="toggle-title">필수 문항</p>
 
-                            <input id="option-choice-required3" type="checkbox" class="toggle-checkbox" />
-                            <label for="option-choice-required3" class="toggle-switch">
+                            <input id="option-choice-required2" type="checkbox" class="toggle-checkbox" />
+                            <label for="option-choice-required2" class="toggle-switch">
                               <div class="toggle-body"></div>
                               <div class="toggle-head"></div>
                             </label>
@@ -434,7 +474,7 @@
                           <p class="create-title">제목 입력</p>
                         </li>
                         <li>
-                          <input type="text" placeholder="설문 문항의 제목을 입력하세요." class="create-input" />
+                          <input type="text" placeholder="" class="create-input" />
                         </li>
                       </ul>
 
@@ -443,8 +483,8 @@
                           <div class="create-toggle">
                             <p class="toggle-title">필수 문항</p>
 
-                            <input id="option-answer-required3" type="checkbox" class="toggle-checkbox" />
-                            <label for="option-answer-required3" class="toggle-switch">
+                            <input id="option-answer-required2" type="checkbox" class="toggle-checkbox" />
+                            <label for="option-answer-required2" class="toggle-switch">
                               <div class="toggle-body"></div>
                               <div class="toggle-head"></div>
                             </label>
@@ -492,11 +532,14 @@
 
 </body>
 <script>
-  /*
-    19.03.11 추가
-    drag and sort 기능 라이브러리입니다.
-    (https://github.com/Shopify/draggable/tree/master/src/Sortable)
-  */
+  function radioAgain() {
+    var a = "";
+    a = document.querySelector('input[name="votingItemType1"]:checked').id;
+    console.log(a);
+    document.querySelector(`input[id="${a}"]`).checked = true
+    // console.dir(document.querySelector(`input[id="${a}"]`).checked);
+  }
+
   function SimpleList() {
     const containerSelector = "#SimpleList .StackedList";
     const containers = document.querySelectorAll(containerSelector);
@@ -513,16 +556,27 @@
     });
 
     sortable.on('sortable:start', function () {
-      console.log("Start!")
+
+      radioAgain();
+      console.log("궈!")
+
     });
     sortable.on('sortable:stop', function () {
-      console.log("Stop!")
+
+      console.log("스탑")
+
+      radioAgain();
+
     });
 
   }
 
-  SimpleList();
-</script>
 
+  SimpleList();
+  $('input[type="radio"]').on('change', function () {
+    // ...
+    console.log("!!!!")
+  });
+</script>
 
 </html>

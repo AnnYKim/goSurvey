@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/sortable.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .StackedList {
+      position: relative;
+    }
+
+    .StackedListItem {
+      /* height: 30px;
+      padding: 20px; */
+      border: 1px solid #aaa;
+    }
+
+    .StackedListItem:hover {
+      background: pink;
+    }
+
+    .StackedListContent {
+      /* position: relative; */
+      /* display: flex;
+      align-items: center;
+      color: currentColor;
+      background-color: #fafbfc; */
+      border: 1px solid red;
+    }
+
+    .StackedListItem--isDraggable.draggable-mirror .StackedListContent {
+      background-color: gold;
+      border-color: hotpink;
+      transform: scale(1.05);
+    }
+
+    .StackedListItem--isDraggable.draggable-source--is-dragging,
+    .StackedListItem--isDraggable.draggable-source--is-dragging {
+      background-color: lightskyblue;
+    }
+
+    /* .StackedListItem--isDraggable.draggable-source--is-dragging+.draggable--original+.StackedListItem .StackedListContent,
+    .StackedListItem--isDraggable.draggable-source--is-dragging+.StackedListItem .StackedListContent {
+      background-color: lightskyblue;
+    } */
+
+    .Heading,
+    .n-text {
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="SimpleList" class="SimpleList">
+    <article class="">
+      <ul class="StackedList StackedList--hasScroll" tabindex="0">
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item1" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading n-text">item one</h4>
+            <input type="radio" name="radio1" id="radio-id-1" />
+            <label for="radio-id-1">라디오1</label>
+            <input type="radio" name="radio1" id="radio-id-2" />
+            <label for="radio-id-2">라디오2</label>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item2" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item two</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item3" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item three</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item4" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item four</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item5">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item five</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item6" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item six</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item7" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item seven</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item8">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item eight</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item9">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item nine</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item10" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item ten</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item11">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item eleven</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item12" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item twelve</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <script>
+    function SimpleList() {
+      const containerSelector = "#SimpleList .StackedList";
+      const containers = document.querySelectorAll(containerSelector);
+
+      if (containers.length === 0) {
+        return false;
+      }
+      new Draggable.Sortable(containers, {
+        draggable: ".StackedListItem--isDraggable",
+        mirror: {
+          appendTo: containerSelector,
+          constrainDimensions: true
+        }
+      });
+    }
+
+    SimpleList();
+  </script>
+</body>
+
+</html>

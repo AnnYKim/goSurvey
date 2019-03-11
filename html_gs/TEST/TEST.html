@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/sortable.js"></script>
+  <!-- <style>
+    .StackedList {
+      position: relative;
+      margin-top: -.6rem;
+    }
+
+    .StackedList--hasScroll {
+      height: 40.2rem;
+      overflow-y: scroll;
+    }
+
+    .StackedListItem {
+      cursor: url(https://shopify.github.io/draggable/assets/img/cursor-auto.png), auto;
+    }
+
+    .StackedListItem--isDraggable {
+      cursor: url(https://shopify.github.io/draggable/assets/img/cursor-drag.png), auto;
+    }
+
+    .StackedListContent,
+    .StackedListHeader {
+      height: 7.2rem;
+    }
+
+    .StackedListContent {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 1.6rem;
+      color: currentColor;
+      background-color: #fafbfc;
+      border: .6rem solid currentColor;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1), transform .24s cubic-bezier(.32, 1.46, .54, 1.28), -webkit-transform .24s cubic-bezier(.32, 1.46, .54, 1.28);
+    }
+
+    .StackedListItem--isDraggable .StackedListContent {
+      background-color: #fff;
+    }
+
+    .StackedListContent:before {
+      content: "";
+      position: absolute;
+      top: -.6rem;
+      right: -.6rem;
+      left: -.6rem;
+      display: block;
+      height: .6rem;
+      background-color: red;
+      opacity: 0;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), opacity .12s cubic-bezier(.64, 0, .35, 1);
+    }
+
+    .DragHandle {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+      background-color: currentColor;
+    }
+
+    .DragHandle,
+    .DragHandle:after,
+    .DragHandle:before {
+      transition: background-color .12s cubic-bezier(.64, 0, .35, 1);
+    }
+
+    .DragHandle:after,
+    .DragHandle:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      display: block;
+      height: .4rem;
+      background-color: #fff;
+    }
+
+    .DragHandle:before {
+      top: .4rem;
+    }
+
+    .DragHandle:after {
+      bottom: .4rem;
+    }
+
+    .Pattern {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+
+
+
+    .Pattern--typeHalftone {
+      background-image: radial-gradient(currentColor 24%, transparent 25%), radial-gradient(currentColor 24%, transparent 25%);
+      background-position: 0 0, .6rem .6rem;
+      background-size: 1.2rem 1.2rem;
+      -webkit-animation: halftone .48s steps(3) infinite both paused;
+      animation: halftone .48s steps(3) infinite both paused;
+    }
+
+    @keyframes halftone {
+      from {
+        background-position: 0 0, 0.6rem 0.6rem;
+      }
+
+      to {
+        background-position: 0.6rem 0.6rem, 1.2rem 1.2rem;
+      }
+    }
+
+    .Pattern--typePlaced {
+      background-color: #0042ff;
+    }
+  </style> -->
+  <style>
+    .StackedListWrapper {
+      background-image: repeating-linear-gradient(-45deg, var(--pattern-bg-color), var(--pattern-bg-color) 40%, currentColor 0, currentColor 50%, var(--pattern-bg-color) 0);
+      background-size: .8rem .8rem;
+      position: relative;
+      color: #212529;
+      box-shadow: inset 0 0 0 .6rem currentColor
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper {
+        box-shadow: inset 0 0 0 .8rem currentColor
+      }
+    }
+
+    .StackedListContent,
+    .StackedListHeader {
+      height: 7.2rem
+    }
+
+    @media screen and (min-width:1440px) {
+
+      .StackedListContent,
+      .StackedListHeader {
+        height: 8.6rem
+      }
+    }
+
+    .StackedListHeader {
+      padding: 2.2rem;
+      background-color: currentColor;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1)
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListHeader {
+        padding: 2.4rem
+      }
+    }
+
+    .StackedListHeader p {
+      margin-top: .2em;
+      font-size: 2rem;
+      color: #fff
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListHeader p {
+        font-size: 2.4rem
+      }
+    }
+
+    @media screen and (min-width:1440px) {
+      .StackedListHeader p {
+        font-size: 2.8rem
+      }
+    }
+
+    .StackedList {
+      position: relative;
+      margin-top: -.6rem
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedList {
+        margin-top: -.8rem
+      }
+    }
+
+    .StackedList:before {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      color: currentColor;
+      font-size: 2rem;
+      font-weight: 700;
+      pointer-events: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      content: "drop items here";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 80%;
+      height: 80%;
+      background-color: #fff;
+      transition: opacity .24s cubic-bezier(.64, 0, .35, 1), visibility .24s cubic-bezier(.64, 0, .35, 1)
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedList:before {
+        font-size: 2.4rem
+      }
+    }
+
+    @media screen and (min-width:1440px) {
+      .StackedList:before {
+        font-size: 2.8rem
+      }
+    }
+
+    .StackedList:empty:before {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto
+    }
+
+    .StackedListItem {
+      cursor: url(https://shopify.github.io/draggable/assets/img/cursor-auto.png), auto
+    }
+
+    .StackedListItem:nth-child(1n+2) {
+      margin-top: -.6rem
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListItem:nth-child(1n+2) {
+        margin-top: -.8rem
+      }
+    }
+
+    .draggable--original:first-child+.StackedListItem {
+      margin-top: 0
+    }
+
+    .StackedListContent {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 1.6rem;
+      color: currentColor;
+      background-color: #fafbfc;
+      border: .6rem solid currentColor;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1),
+        -webkit-transform .24s cubic-bezier(.32, 1.46, .54, 1.28);
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1), transform .24s cubic-bezier(.32, 1.46, .54, 1.28);
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1), transform .24s cubic-bezier(.32, 1.46, .54, 1.28), -webkit-transform .24s cubic-bezier(.32, 1.46, .54, 1.28)
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListContent {
+        border-width: .8rem
+      }
+    }
+
+    .StackedListContent .Heading {
+      flex: 1 1 auto
+    }
+
+    .StackedListContent .DragHandle,
+    .StackedListContent .NopeHandle {
+      flex: 0 0 2rem;
+      margin-left: 2.4rem
+    }
+
+    .StackedListContent:before {
+      content: "";
+      position: absolute;
+      top: -.6rem;
+      right: -.6rem;
+      left: -.6rem;
+      display: block;
+      height: .6rem;
+      background-color: currentColor;
+      opacity: 0;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), opacity .12s cubic-bezier(.64, 0, .35, 1)
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListContent:before {
+        top: -.8rem;
+        right: -.8rem;
+        left: -.8rem;
+        height: .8rem
+      }
+    }
+
+    .StackedListWrapper--sizeMedium .StackedListContent,
+    .StackedListWrapper--sizeMedium .StackedListHeader {
+      height: 10rem
+    }
+
+    @media screen and (min-width:1440px) {
+
+      .StackedListWrapper--sizeMedium .StackedListContent,
+      .StackedListWrapper--sizeMedium .StackedListHeader {
+        height: 16.4rem
+      }
+    }
+
+    .StackedListWrapper--sizeLarge .StackedListContent,
+    .StackedListWrapper--sizeLarge .StackedListHeader {
+      height: 14.4rem
+    }
+
+    @media screen and (min-width:1440px) {
+
+      .StackedListWrapper--sizeLarge .StackedListContent,
+      .StackedListWrapper--sizeLarge .StackedListHeader {
+        height: 20.6rem
+      }
+    }
+
+    .StackedListWrapper--hasScrollIndicator:after {
+      content: "";
+      position: absolute;
+      display: block;
+      background-color: currentColor;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), opacity .24s cubic-bezier(.64, 0, .35, 1);
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: .6rem
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--hasScrollIndicator:after {
+        height: .8rem
+      }
+    }
+
+    .StackedListWrapper--hasScrollIndicator:hover:after {
+      opacity: .1
+    }
+
+    .StackedList--hasScroll {
+      height: 40.2rem;
+      overflow-y: scroll
+    }
+
+    @media screen and (min-width:1440px) {
+      .StackedList--hasScroll {
+        height: 55.4rem
+      }
+    }
+
+    .StackedListWrapper--sizeMedium .StackedList--hasScroll {
+      height: 28.8rem
+    }
+
+    @media screen and (min-width:1440px) {
+      .StackedListWrapper--sizeMedium .StackedList--hasScroll {
+        height: 47.6rem
+      }
+    }
+
+    .StackedListWrapper--sizeLarge .StackedList--hasScroll {
+      height: 42rem
+    }
+
+    @media screen and (min-width:1440px) {
+      .StackedListWrapper--sizeLarge .StackedList--hasScroll {
+        height: 60.2rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal {
+      display: flex
+    }
+
+    .StackedListWrapper--axisHorizontal:after {
+      content: "";
+      position: absolute;
+      display: block;
+      background-color: currentColor;
+      transition: color .12s cubic-bezier(.64, 0, .35, 1), opacity .24s cubic-bezier(.64, 0, .35, 1);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: .6rem
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--axisHorizontal:after {
+        width: .8rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal:hover:after {
+      opacity: .1
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedListContent,
+    .StackedListWrapper--axisHorizontal .StackedListHeader {
+      height: 7.2rem
+    }
+
+    @media screen and (min-width:768px) {
+
+      .StackedListWrapper--axisHorizontal .StackedListContent,
+      .StackedListWrapper--axisHorizontal .StackedListHeader {
+        height: 8.6rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedListHeader {
+      flex: 0 0 14.4rem
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--axisHorizontal .StackedListHeader {
+        flex-basis: 20.6rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedList {
+      display: flex;
+      flex: 1 1 auto;
+      margin-top: 0;
+      margin-left: -.6rem;
+      overflow-x: scroll
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--axisHorizontal .StackedList {
+        margin-left: -.8rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedListItem {
+      flex: 1 0 14.4rem;
+      max-width: 28.8rem
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedListItem:nth-child(1n+2) {
+      margin-top: 0;
+      margin-left: -.6rem
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--axisHorizontal .StackedListItem:nth-child(1n+2) {
+        margin-left: -.8rem
+      }
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--axisHorizontal .StackedListItem {
+        flex-basis: 20.6rem;
+        max-width: 41.2rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal .draggable--original:first-child+.StackedListItem {
+      margin-left: 0
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedListContent {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center
+    }
+
+    .StackedListWrapper--axisHorizontal .StackedListContent:before {
+      top: -.6rem;
+      right: auto;
+      bottom: -.6rem;
+      left: -.6rem;
+      width: .6rem;
+      height: auto
+    }
+
+    @media screen and (min-width:768px) {
+      .StackedListWrapper--axisHorizontal .StackedListContent:before {
+        top: -.8rem;
+        bottom: -.8rem;
+        left: -.8rem;
+        width: .8rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal .DragHandle,
+    .StackedListWrapper--axisHorizontal .NopeHandle {
+      margin-left: 0
+    }
+
+    .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeMedium .StackedListContent,
+    .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeMedium .StackedListHeader {
+      height: 10rem
+    }
+
+    @media screen and (min-width:768px) {
+
+      .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeMedium .StackedListContent,
+      .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeMedium .StackedListHeader {
+        height: 16.4rem
+      }
+    }
+
+    .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeLarge .StackedListContent,
+    .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeLarge .StackedListHeader {
+      height: 14.4rem
+    }
+
+    @media screen and (min-width:768px) {
+
+      .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeLarge .StackedListContent,
+      .StackedListWrapper--axisHorizontal.StackedListWrapper--sizeLarge .StackedListHeader {
+        height: 20.6rem
+      }
+    }
+
+    .StackedListItem--isDraggable {
+      cursor: url(https://shopify.github.io/draggable/assets/img/cursor-drag.png), auto
+    }
+
+    .StackedListItem--isDraggable .StackedListContent {
+      background-color: #fff
+    }
+
+    .StackedListItem--isDraggable:focus {
+      outline: none
+    }
+
+    .StackedListItem--isDraggable:focus .StackedListContent,
+    .StackedListItem--isDraggable:hover .StackedListContent {
+      color: #0042ff
+    }
+
+    .StackedListItem--isDraggable:focus+.StackedListItem .StackedListContent:before,
+    .StackedListItem--isDraggable:hover+.StackedListItem .StackedListContent:before {
+      background-color: red;
+      opacity: 1
+    }
+
+    .StackedListItem--isDraggable.draggable-source--is-dragging .StackedListContent {
+      color: purple
+    }
+
+    .StackedListItem--isDraggable.draggable-source--is-dragging .StackedListContent .Pattern--typeHalftone {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      -webkit-animation-play-state: running;
+      animation-play-state: running
+    }
+
+    .StackedListItem--isDraggable.draggable-source--is-dragging+.draggable--original+.StackedListItem .StackedListContent:before,
+    .StackedListItem--isDraggable.draggable-source--is-dragging+.StackedListItem .StackedListContent:before {
+      background-color: lightskyblue;
+      opacity: 1
+    }
+
+    .StackedListItem--isDraggable.draggable-source--placed .StackedListContent .Pattern--typePlaced {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      -webkit-animation: placed .24s cubic-bezier(.64, 0, .35, 1) both;
+      animation: placed .24s cubic-bezier(.64, 0, .35, 1) both
+    }
+
+    .StackedListItem--isDraggable.draggable-mirror {
+      z-index: 7
+    }
+
+    .StackedListItem--isDraggable.draggable-mirror .StackedListContent {
+      color: #fff;
+      background-color: gold;
+      border-color: hotpink;
+      -webkit-transform: scale(1.025);
+      transform: scale(1.025)
+    }
+
+    .StackedListItem--isDraggable.draggable-mirror .StackedListContent:after,
+    .StackedListItem--isDraggable.draggable-mirror .StackedListContent:before {
+      display: none
+    }
+
+    .StackedListItem--isDraggable.draggable-mirror .DragHandle {
+      background-color: #fff
+    }
+
+    .StackedListItem--isDraggable.draggable-mirror .DragHandle:after,
+    .StackedListItem--isDraggable.draggable-mirror .DragHandle:before {
+      background-color: darkgreen;
+    }
+
+    .UniqueDropzone .BlockLayout .BlockWrapper .Block:nth-child(1n+3):not(.draggable-source--is-dragging) {
+      min-height: 0;
+      height: 0
+    }
+  </style>
+</head>
+
+<body>
+  <section id="SimpleList" class="SimpleList">
+    <article class="StackedListWrapper StackedListWrapper--hasScrollIndicator">
+      <header class="StackedListHeader">
+        <h3 class="Heading Heading--size3 Heading--colorWhite">Simple list</h3>
+      </header>
+      <ul class="StackedList StackedList--hasScroll" tabindex="0">
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item1" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item one</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item2" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item two</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item3" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item three</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item4" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item four</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item5">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item five</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item6" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item six</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item7" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item seven</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item8">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item eight</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item9">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item nine</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item10" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item ten</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--item11">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item eleven</h4>
+            <div class="NopeHandle"></div>
+          </div>
+        </li>
+        <li class="StackedListItem StackedListItem--isDraggable StackedListItem--item12" tabindex="1">
+          <div class="StackedListContent">
+            <h4 class="Heading Heading--size4 text-no-select">item twelve</h4>
+            <div class="DragHandle"></div>
+            <div class="Pattern Pattern--typeHalftone"></div>
+            <div class="Pattern Pattern--typePlaced"></div>
+          </div>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <script>
+    function SimpleList() {
+      const containerSelector = '#SimpleList .StackedList';
+      const containers = document.querySelectorAll(containerSelector);
+
+      if (containers.length === 0) {
+        return false;
+      }
+      new Draggable.Sortable(containers, {
+        draggable: '.StackedListItem--isDraggable',
+        mirror: {
+          appendTo: containerSelector,
+          constrainDimensions: true,
+        },
+      });
+    }
+
+    SimpleList();
+  </script>
+</body>
+
+</html>
