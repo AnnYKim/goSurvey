@@ -1,6 +1,7 @@
 # [ Go Survey ] WebApp
 
 _Last Modified: 2019-03-11_
+저장소: https://github.com/AnnYKim/goSurvey
 
 - 파일 목록은 index.html에 정리되어있습니다.
 - 고서베이 작업 부분은 html_bs/ 내에 존재합니다.
