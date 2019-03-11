@@ -1,6 +1,6 @@
 /**
  * -----------------------------------------------
- * Last Modified: 2019-03-11 11:14:44
+ * Last Modified: 2019-03-11 20:44:49
  * Author: nykim (nykim@nykim.net)
  * Description: Go Survey CSS
  * -----------------------------------------------
@@ -754,9 +754,13 @@ button { font-size: 1.4rem; }
 
 .homeScreen-main.init .app-list-container { min-height: 30rem; }
 
-.homeScreen-main .banner { display: block; width: 100%; margin: 0 auto; overflow-x: hidden; border-top: 1px solid #bebebe; border-bottom: 1px solid #bebebe; background-color: #f4f4f4; }
+.homeScreen-main .banner { position: relative; display: block; width: 100%; margin: 0 auto; overflow-x: hidden; border-top: 1px solid #bebebe; border-bottom: 1px solid #bebebe; background-color: #f4f4f4; }
 
-.homeScreen-main .banner .banner-slide { width: 100%; }
+.homeScreen-main .banner .banner-container { position: relative; transition: transform 0.5s; }
+
+.homeScreen-main .banner .banner-wrapper { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; width: 100%; }
+
+.homeScreen-main .banner .banner-slide { -webkit-flex-shrink: 0; -moz-flex-shrink: 0; -ms-flex-shrink: 0; -ms-flex-negative: 0; flex-shrink: 0; width: 100%; }
 
 .homeScreen-main .banner .banner-link { display: block; width: 100%; }
 
@@ -766,13 +770,25 @@ button { font-size: 1.4rem; }
 
 .homeScreen-main .banner .slide-goVote { background-color: #f6bf0f; }
 
-.homeScreen-main .banner .swiper-pagination { top: 0; right: 0; text-align: right; margin-top: 1.5rem; padding: 0 1rem; }
+.homeScreen-main .banner .banner-pagination { z-index: 10; position: absolute; top: 0; right: 0; width: 100%; text-align: right; padding: 0 1rem; margin-top: 1.5rem; }
 
-.homeScreen-main .banner .swiper-pagination .swiper-pagination-bullet { opacity: 1; width: 0.7rem; height: 0.7rem; margin-left: 0; margin-right: 0.4rem; background: #fff; }
+.homeScreen-main .banner .banner-pagination .banner-pagination-bullet { display: inline-block; opacity: 1; width: 0.8rem; height: 0.8rem; margin-left: 0; margin-right: 0.4rem; background: #fff; border-radius: 50%; }
 
-.homeScreen-main .banner .swiper-pagination .swiper-pagination-bullet-active:first-child { background: #0929e5; }
+.homeScreen-main .banner .banner-pagination .swiper-pagination-bullet-active:first-child { background: #0929e5; }
 
-.homeScreen-main .banner .swiper-pagination .swiper-pagination-bullet-active:nth-child(2) { background: #ff1d53; }
+.homeScreen-main .banner .banner-pagination .swiper-pagination-bullet-active:nth-child(2) { background: #ff1d53; }
+
+.homeScreen-main .banner-container { -webkit-transform: translateX(0%); -moz-transform: translateX(0%); -ms-transform: translateX(0%); transform: translateX(0%); }
+
+.homeScreen-main .banner-container + .banner-pagination .banner-pagination-bullet:first-child { background: #0929e5; }
+
+.homeScreen-main .banner-container.show2 { -webkit-transform: translateX(-100%); -moz-transform: translateX(-100%); -ms-transform: translateX(-100%); transform: translateX(-100%); }
+
+.homeScreen-main .banner-container.show2 + .banner-pagination .banner-pagination-bullet:first-child { background: #ffffff; }
+
+.homeScreen-main .banner-container.show2 + .banner-pagination .banner-pagination-bullet:nth-child(2) { background: #ff1d53; }
+
+.homeScreen-main .banner-container.show3 { -webkit-transform: translateX(-200%); -moz-transform: translateX(-200%); -ms-transform: translateX(-200%); transform: translateX(-200%); }
 
 .homeScreen-main .dapplist-top { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: space-between; -moz-justify-content: space-between; -ms-justify-content: space-between; justify-content: space-between; -ms-flex-pack: space-between; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; align-items: center; height: 4.35rem; padding: 0 2rem; line-height: 4rem; border-bottom: 1px solid #ebebee; }
 
