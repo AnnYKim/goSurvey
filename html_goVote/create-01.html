@@ -2,19 +2,19 @@
 <html lang="ko">
 
 <head>
-  <title>go survey</title>
+  <title>go vote</title>
 
-  <link type="text/css" rel="stylesheet" href="../css/style.css" />
+  <link type="text/css" rel="stylesheet" href="../css/govote(TEST).css" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
   <meta name="format-detection" content="telephone=no, address=no, email=no" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
-  <script type="text/javascript" src="../js/test.js"></script>
+  <script type="text/javascript" src="../js/goVote.js"></script>
   <!--
     [전달사항]
     이벤트 확인용 js입니다.
@@ -23,31 +23,34 @@
 
 <body class="body-create">
   <!-- 투표 생성 화면 (1단계) -->
-
   <div id="wrapper" class="create">
+
     <div class="page-top">
+
       <div class="page-header">
         <div class="page-header-left">
           <button class="icon-container"><i class="icon icon-close"></i></button>
         </div>
         <h1 class="page-title">
-          설문 생성
+          투표 생성
         </h1>
       </div>
 
       <div class="create-process active-1">
         <!--
-          [전달사항] 활성화된 순서에 따라 create-process에
-          active-1, active-2, active-3, active-4 클래스를 각각 추가해주세요.
+          [전달사항]
+          활성화된 순서에 따라 create-process에
+          active-1, active-2, active-3, active-4
+          클래스를 추가해주세요.
         -->
         <div class="process-level">
-          <span class="text">설문 정보 입력</span>
+          <span class="text">투표 정보 입력</span>
         </div>
         <div class="process-level">
-          <span class="text">설문 문항 작성</span>
+          <span class="text">투표 항목 입력</span>
         </div>
         <div class="process-level">
-          <span class="text">설문 대상 설정</span>
+          <span class="text">투표 항목 입력</span>
         </div>
         <div class="process-level">
           <span class="text">작성 정보 확인</span>
@@ -63,25 +66,40 @@
         <form>
           <ul class="create-item">
             <li>
-              <p class="create-title">설문제목</p>
+              <p class="create-title">투표제목</p>
             </li>
             <li>
-              <input type="text" placeholder="설문제목을 입력하세요." class="create-input" />
+              <input type="text" placeholder="투표 제목을 입력하세요." class="create-input" />
             </li>
           </ul>
-          <ul class="create-item create-poll-info">
+
+          <!--
+            >> ver3 마크업 수정
+          -->
+
+          <ul class="create-item create-poll-info init">
+            <!--
+                [전달사항] <ui.js>
+                이미지가 등록되면 .create-poll-info 에게서 init 클래스를 제거해 주세요.
+              -->
             <li>
-              <p class="create-title">설문정보</p>
+              <p class="create-title">투표정보 / 이미지 등록</p>
+              <button class="button-image-attach"><i class="icon icon-image-attach"></i></button>
             </li>
             <li class="ly-padding-sm">
-              <div contentEditable="true" class="create-description" data-placeholder="설문정보를 입력하세요." id="editable-area"
+              <div contentEditable="true" class="create-description" data-placeholder="투표 정보를 입력하거나 이미지를 등록하세요." id="editable-area"
                 tabIndex="0">
-                2019년도 1학기 기초디자인 강의평가입니다.<br />많은 참여 부탁드립니다.
+                <div>제 21대 총학생회장 선거를 실시합니다. <br>많은 참여 부탁드립니다.</div>
+              </div>
+              <div class="create-description-image">
+                <img src="../images/goVote/thumbnail-test.png" alt="image" />
+                <button class="button-image-delete"><i class="icon icon-delete"></i></button>
               </div>
 
               <script>
                 /*
-                  [전달사항] #editable-area의 값이 비어져있는지를 파악해서 data-placeholder를 보여주기 위함입니다.
+                  [전달사항]
+                  #editable-area의 값이 비어져있는지를 파악해서 data-placeholder를 보여주기 위함입니다.
                 */
                 var target = document.querySelector('#editable-area');
                 var observer = new MutationObserver(function (mutations) {
@@ -93,13 +111,14 @@
                 });
                 var config = { attributes: true, childList: true, characterData: true };
                 observer.observe(target, config);
+
               </script>
             </li>
           </ul>
 
           <ul class="create-item">
             <li>
-              <p class="create-title">설문 시작 일시</p>
+              <p class="create-title">투표 시작 일시</p>
             </li>
             <li>
               <div class="create-date-container">
@@ -108,15 +127,33 @@
                 <i class="icon icon-arrow-right"></i>
                 <input type="datetime-local" id="date-voteStartDate" class="input-hidden" />
                 <!--
-                  [전달사항] 이 input[type="datetime-local"]은 opacity:0으로 숨겨져 있습니다. 
+                  [전달사항]
+                  이 input[type="datetime-local"]은  opacity:0으로 숨겨져 있습니다. 
                 -->
               </div>
             </li>
           </ul>
 
           <ul class="create-item set-endCondition-area date">
+            <!--
+              [전달사항]
+              - 일시 기준일 때: set-endCondition-area date 클래스 추가
+              - 사람수 기준일 때: set-endCondition-area people 클래스 추가
+            -->
             <li>
-              <p class="create-title">설문 종료 기준</p>
+              <p class="create-title">투표 종료 기준</p>
+            </li>
+            <li>
+              <div class="create-radio-container">
+                <div class="radio">
+                  <input type="radio" id="endCondition-date" name="endCondition" class="create-radio" checked />
+                  <label for="endCondition-date">일시</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" id="endCondition-people" name="endCondition" class="create-radio" />
+                  <label for="endCondition-people">사람 수</label>
+                </div>
+              </div>
             </li>
             <li class="condition-date">
               <div class="create-date-container">
@@ -131,6 +168,10 @@
               <p class="unit">명</p>
             </li>
           </ul>
+
+          <!--
+            // ver3 마크업 수정
+          -->
 
           <ul class="create-item">
             <li>
@@ -158,22 +199,32 @@
             <li>
               <div class="create-toggle">
                 <p class="toggle-title">기권 가능 여부</p>
-
                 <input id="option-able-blank" type="checkbox" class="toggle-checkbox" checked />
                 <label for="option-able-blank" class="toggle-switch">
                   <div class="toggle-body"></div>
                   <div class="toggle-head"></div>
                 </label>
               </div>
+            </li>
+            <li>
+              <div class="create-toggle">
+                <p class="toggle-title">무기명 투표</p>
+
+                <input id="option-able-secret" type="checkbox" class="toggle-checkbox" checked />
+                <label for="option-able-secret" class="toggle-switch">
+                  <div class="toggle-body"></div>
+                  <div class="toggle-head"></div>
+                </label>
+              </div>
               <!--
-                [전달사항] checkbox가 checked 된 상태일 때 활성화된 ui로 바뀝니다. 
+                [전달사항]
+                checkbox가 checked 된 상태일 때 활성화된 ui로 바뀝니다. 
               -->
             </li>
-            <!-- [190318 추가] 아래와 같이 추가하시면 됩니다 -->
+            <!-- [190318 추가] -->
             <li>
               <div class="create-toggle">
                 <p class="toggle-title">결과 숨김</p>
-
                 <input id="option-hide-result" type="checkbox" class="toggle-checkbox" checked />
                 <label for="option-hide-result" class="toggle-switch">
                   <div class="toggle-body"></div>
@@ -181,7 +232,7 @@
                 </label>
               </div>
             </li>
-            <!-- // [190318 추가]  -->
+            <!-- //[190318 추가] -->
           </ul>
 
           <div class="create-buttons-container">
