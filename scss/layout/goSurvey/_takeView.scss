@@ -22,8 +22,9 @@
   .page-body {
     overflow: hidden;
     width: 100%;
-    padding-top: $ly-takeVote-header-height;
-    height: 100%;
+    margin-top: $ly-takeVote-header-height;
+    // height: 100%;
+    height: calc(100% - 5rem - 4.4rem);
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
   }

@@ -20,10 +20,38 @@
   .page-body {
     overflow: hidden;
     width: 100%;
-    padding-top: $ly-takeVote-header-height;
+    margin-top: $ly-takeVote-header-height;
     height: 100%;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+  }
+
+  .tabmenu {
+    background-color: #f4f4f4;
+    z-index: 100;
+    position: fixed;
+    top: 4.4rem;
+    left: 0;
+    width: 100%;
+    height: 6.9rem;
+
+    .tabmenu-item {
+      height: 5rem;
+      line-height: 5rem;
+      font-size: 1.6rem;
+      background-color: #fff;
+    }
+
+
+    &+.page-body {
+      margin-top: 11rem;
+      height: calc(100% - 5rem - 6.6rem - 4.4rem);
+
+      .question-container {
+        padding-top: 0;
+        padding-bottom: 1rem;
+      }
+    }
   }
 
   .create-description {

@@ -61,26 +61,28 @@
 
       <div class="create-item-container">
         <form>
-          <ul class="create-item">
-            <li>
-              <p class="create-title">설문제목</p>
-            </li>
-            <li>
-              <input type="text" placeholder="설문제목을 입력하세요." class="create-input" />
-            </li>
-          </ul>
-          <ul class="create-item create-poll-info">
-            <li>
-              <p class="create-title">설문정보</p>
-            </li>
-            <li class="ly-padding-sm">
-              <div contentEditable="true" class="create-description" data-placeholder="설문정보를 입력하세요." id="editable-area"
-                tabIndex="0">
-                2019년도 1학기 기초디자인 강의평가입니다.<br />많은 참여 부탁드립니다.
-              </div>
+          <!-- [190318 추가] scrollArea 영역 -->
+          <div class="scrollArea">
+            <ul class="create-item">
+              <li>
+                <p class="create-title">설문제목</p>
+              </li>
+              <li>
+                <input type="text" placeholder="설문제목을 입력하세요." class="create-input" />
+              </li>
+            </ul>
+            <ul class="create-item create-poll-info">
+              <li>
+                <p class="create-title">설문정보</p>
+              </li>
+              <li class="ly-padding-sm">
+                <div contentEditable="true" class="create-description" data-placeholder="설문정보를 입력하세요." id="editable-area"
+                  tabIndex="0">
+                  2019년도 1학기 기초디자인 강의평가입니다.<br />많은 참여 부탁드립니다.
+                </div>
 
-              <script>
-                /*
+                <script>
+                  /*
                   [전달사항] #editable-area의 값이 비어져있는지를 파악해서 data-placeholder를 보여주기 위함입니다.
                 */
                 var target = document.querySelector('#editable-area');
@@ -94,96 +96,97 @@
                 var config = { attributes: true, childList: true, characterData: true };
                 observer.observe(target, config);
               </script>
-            </li>
-          </ul>
+              </li>
+            </ul>
 
-          <ul class="create-item">
-            <li>
-              <p class="create-title">설문 시작 일시</p>
-            </li>
-            <li>
-              <div class="create-date-container">
-                <p class="create-date-placeholder">날짜를 선택하세요.</p>
-                <p class="create-date">2018년 8월 30일 목요일 <i class="icon icon-clock"></i>오후 3:30</p>
-                <i class="icon icon-arrow-right"></i>
-                <input type="datetime-local" id="date-voteStartDate" class="input-hidden" />
-                <!--
+            <ul class="create-item">
+              <li>
+                <p class="create-title">설문 시작 일시</p>
+              </li>
+              <li>
+                <div class="create-date-container">
+                  <p class="create-date-placeholder">날짜를 선택하세요.</p>
+                  <p class="create-date">2018년 8월 30일 목요일 <i class="icon icon-clock"></i>오후 3:30</p>
+                  <i class="icon icon-arrow-right"></i>
+                  <input type="datetime-local" id="date-voteStartDate" class="input-hidden" />
+                  <!--
                   [전달사항] 이 input[type="datetime-local"]은 opacity:0으로 숨겨져 있습니다. 
                 -->
-              </div>
-            </li>
-          </ul>
+                </div>
+              </li>
+            </ul>
 
-          <ul class="create-item set-endCondition-area date">
-            <li>
-              <p class="create-title">설문 종료 기준</p>
-            </li>
-            <li class="condition-date">
-              <div class="create-date-container">
-                <p class="create-date-placeholder">날짜를 선택하세요.</p>
-                <p class="create-date">2018년 8월 30일 목요일 <i class="icon icon-clock"></i>오후 3:30</p>
-                <i class="icon icon-arrow-right"></i>
-                <input type="datetime-local" id="date-voteEndDate" class="input-hidden" />
-              </div>
-            </li>
-            <li class="condition-people">
-              <input type="number" placeholder="사람 수를 입력하세요." class="create-input" min="1" />
-              <p class="unit">명</p>
-            </li>
-          </ul>
+            <ul class="create-item set-endCondition-area date">
+              <li>
+                <p class="create-title">설문 종료 기준</p>
+              </li>
+              <li class="condition-date">
+                <div class="create-date-container">
+                  <p class="create-date-placeholder">날짜를 선택하세요.</p>
+                  <p class="create-date">2018년 8월 30일 목요일 <i class="icon icon-clock"></i>오후 3:30</p>
+                  <i class="icon icon-arrow-right"></i>
+                  <input type="datetime-local" id="date-voteEndDate" class="input-hidden" />
+                </div>
+              </li>
+              <li class="condition-people">
+                <input type="number" placeholder="사람 수를 입력하세요." class="create-input" min="1" />
+                <p class="unit">명</p>
+              </li>
+            </ul>
 
-          <ul class="create-item">
-            <li>
-              <div class="create-toggle">
-                <p class="toggle-title">앱 알림</p>
+            <ul class="create-item">
+              <li>
+                <div class="create-toggle">
+                  <p class="toggle-title">앱 알림</p>
 
-                <input id="option-noti-app" type="checkbox" class="toggle-checkbox" />
-                <label for="option-noti-app" class="toggle-switch">
-                  <div class="toggle-body"></div>
-                  <div class="toggle-head"></div>
-                </label>
-              </div>
-            </li>
-            <li>
-              <div class="create-toggle">
-                <p class="toggle-title">이메일 알림</p>
+                  <input id="option-noti-app" type="checkbox" class="toggle-checkbox" />
+                  <label for="option-noti-app" class="toggle-switch">
+                    <div class="toggle-body"></div>
+                    <div class="toggle-head"></div>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="create-toggle">
+                  <p class="toggle-title">이메일 알림</p>
 
-                <input id="option-noti-email" type="checkbox" class="toggle-checkbox" />
-                <label for="option-noti-email" class="toggle-switch">
-                  <div class="toggle-body"></div>
-                  <div class="toggle-head"></div>
-                </label>
-              </div>
-            </li>
-            <li>
-              <div class="create-toggle">
-                <p class="toggle-title">기권 가능 여부</p>
+                  <input id="option-noti-email" type="checkbox" class="toggle-checkbox" />
+                  <label for="option-noti-email" class="toggle-switch">
+                    <div class="toggle-body"></div>
+                    <div class="toggle-head"></div>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="create-toggle">
+                  <p class="toggle-title">기권 가능 여부</p>
 
-                <input id="option-able-blank" type="checkbox" class="toggle-checkbox" checked />
-                <label for="option-able-blank" class="toggle-switch">
-                  <div class="toggle-body"></div>
-                  <div class="toggle-head"></div>
-                </label>
-              </div>
-              <!--
+                  <input id="option-able-blank" type="checkbox" class="toggle-checkbox" checked />
+                  <label for="option-able-blank" class="toggle-switch">
+                    <div class="toggle-body"></div>
+                    <div class="toggle-head"></div>
+                  </label>
+                </div>
+                <!--
                 [전달사항] checkbox가 checked 된 상태일 때 활성화된 ui로 바뀝니다. 
               -->
-            </li>
-            <!-- [190318 추가] 아래와 같이 추가하시면 됩니다 -->
-            <li>
-              <div class="create-toggle">
-                <p class="toggle-title">결과 숨김</p>
+              </li>
+              <!-- [190318 추가] 아래와 같이 추가하시면 됩니다 -->
+              <li>
+                <div class="create-toggle">
+                  <p class="toggle-title">결과 숨김</p>
 
-                <input id="option-hide-result" type="checkbox" class="toggle-checkbox" checked />
-                <label for="option-hide-result" class="toggle-switch">
-                  <div class="toggle-body"></div>
-                  <div class="toggle-head"></div>
-                </label>
-              </div>
-            </li>
-            <!-- // [190318 추가]  -->
-          </ul>
-
+                  <input id="option-hide-result" type="checkbox" class="toggle-checkbox" checked />
+                  <label for="option-hide-result" class="toggle-switch">
+                    <div class="toggle-body"></div>
+                    <div class="toggle-head"></div>
+                  </label>
+                </div>
+              </li>
+              <!-- // [190318 추가]  -->
+            </ul>
+          </div>
+          <!--// [190318 추가] scrollArea 영역 -->
           <div class="create-buttons-container">
             <button class="button-next">다음</button>
           </div>

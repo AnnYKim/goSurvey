@@ -41,59 +41,64 @@
     <div class="page-body">
       <div class="create-item-container">
         <form>
-          <div class="question-container">
+          <!-- [190318 추가] scrollArea 영역 -->
+          <div class="scrollArea">
+            <div class="question-container">
 
-            <div class="wrap-question">
-              <div class="question-title">
-                <p class="question-text">Question 02</p>
-              </div>
+              <div class="wrap-question">
+                <div class="question-title">
+                  <p class="question-text">Question 02</p>
+                </div>
 
-              <div class="question-content">
-                <ul class="create-item">
-                  <li class="ly-padding-sm">
-                    <div class="itemDetails">
-                      <div class="itemDetails-text">
-                        기타 의견을 입력해주세요.
-                      </div>
-                      <div class="itemDetails-answer">
-                        <div contentEditable="true" class="answer-textarea" data-placeholder="100자 이내로 입력하세요." id="editable-area"
-                          tabIndex="0">
-                          대한민국은 민주공화국이다. 공개하지 아니한 회의 내용의 공표에 관하여는 법률이 정하는 바에 의한다.<br />
-                          국민의 모든 자유와 권리는 국가안전보장·질서유지 또는 공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있다.
+                <div class="question-content">
+                  <ul class="create-item">
+                    <li class="ly-padding-sm">
+                      <div class="itemDetails">
+                        <div class="itemDetails-text">
+                          기타 의견을 입력해주세요.
                         </div>
-                        <!-- [전달사항] 작성 가능할 때는 contentEditable="true" 설정 부탁드립니다. -->
+                        <div class="itemDetails-answer">
+                          <div contentEditable="true" class="answer-textarea" data-placeholder="100자 이내로 입력하세요." id="editable-area"
+                            tabIndex="0">
+                            대한민국은 민주공화국이다. 공개하지 아니한 회의 내용의 공표에 관하여는 법률이 정하는 바에 의한다.<br />
+                            국민의 모든 자유와 권리는 국가안전보장·질서유지 또는 공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있다.
+                          </div>
+                          <!-- [전달사항] 작성 가능할 때는 contentEditable="true" 설정 부탁드립니다. -->
 
-                        <script>
-                          /*
+                          <script>
+                            /*
                             [전달사항] #editable-area의 값이 비어져있는지를 파악해서 data-placeholder를 보여주기 위함입니다.
                           */
-                          var target = document.querySelector('#editable-area');
-                          var observer = new MutationObserver(function (mutations) {
-                            mutations.forEach(function (mutation) {
-                              if (target.textContent == '') {
-                                target.innerHTML = '';
-                              }
+                            var target = document.querySelector('#editable-area');
+                            var observer = new MutationObserver(function (mutations) {
+                              mutations.forEach(function (mutation) {
+                                if (target.textContent == '') {
+                                  target.innerHTML = '';
+                                }
+                              });
                             });
-                          });
-                          var config = {
-                            attributes: true,
-                            childList: true,
-                            characterData: true
-                          };
-                          observer.observe(target, config);
-                        </script>
+                            var config = {
+                              attributes: true,
+                              childList: true,
+                              characterData: true
+                            };
+                            observer.observe(target, config);
+                          </script>
+                        </div>
+                        <div class="itemDetails-error">에러 메시지입니다. Elit incididunt et ea officia sunt quis adipisicing
+                          do
+                          Lorem veniam nostrud.</div>
+                        <!-- [전달사항] 에러 시 메시지 추가해주세요. -->
                       </div>
-                      <div class="itemDetails-error">에러 메시지입니다. Elit incididunt et ea officia sunt quis adipisicing do
-                        Lorem veniam nostrud.</div>
-                      <!-- [전달사항] 에러 시 메시지 추가해주세요. -->
-                    </div>
-                  </li>
-                </ul>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <!-- //end of .wrap-question -->
+              <!-- //end of .wrap-question -->
 
+            </div>
           </div>
+          <!-- //[190318 추가] scrollArea 영역 -->
           <div class="create-buttons-container">
             <button class="button-prev">이전</button>
             <button class="button-next">다음</button>
