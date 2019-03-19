@@ -47,6 +47,15 @@
       margin-top: 11rem;
       height: calc(100% - 5rem - 6.6rem - 4.4rem);
 
+      .create-item-container {
+        // background: #fff;
+        // border-bottom: 1rem solid #f4f4f4;
+      }
+
+      .create-item:first-child {
+        margin-top: 0;
+      }
+
       .question-container {
         padding-top: 0;
         padding-bottom: 1rem;

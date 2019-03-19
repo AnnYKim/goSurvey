@@ -37,6 +37,10 @@
     overflow-y: auto;
   }
 
+  .wrap-question:first-child {
+    padding-top: 1rem;
+  }
+
   .create-item-container {
     height: 100%;
     overflow-y: auto;

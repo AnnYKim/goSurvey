@@ -57,17 +57,17 @@
       </div>
     </div>
 
-    <!-- [190318 수정] 마크업 위치 변경 -->
+    <!-- [190319 수정] 마크업 위치 변경 -->
     <div class="tabmenu create-target">
       <button class="tabmenu-item active">그룹 선택</button>
       <button class="tabmenu-item">개별 선택</button>
     </div>
-    <!-- //[190318 수정] 마크업 위치 변경 -->
+    <!-- //[190319 수정] 마크업 위치 변경 -->
 
 
     <div class="page-body">
       <div class="create-item-container">
-        <!-- [190318 추가] scrollArea 영역 -->
+        <!-- [190319 추가] scrollArea 영역 -->
         <div class="scrollArea">
           <ul class="create-item">
             <li class="ly-padding-sm voters-selectGroup">
@@ -197,7 +197,7 @@
             </li>
           </ul>
         </div>
-        <!-- //[190318 추가] scrollArea 영역 -->
+        <!-- //[190319 추가] scrollArea 영역 -->
 
         <div class="create-buttons-container">
           <button class="button-prev">이전</button>
@@ -208,12 +208,24 @@
   </div>
 
   <script>
+    /* 
+      [190319 추가]
+      1) 화면 resize 시
+      2) 사용자가 chip을 제거/추가했을 시
+      위 두 상황에서 .page-body의 높이값을
+      calc(100% - 5rem - ${.voters-targetList의 현재높이})만큼
+      유동적으로 변경해주셔야 합니다.
+
+    */
     var v = document.querySelector(".voters-targetList");
-    $(window).on("load resize", function () {
+    window.addEventListener("load", resizeH);
+    window.addEventListener("resize", resizeH);
+
+    function resizeH() {
       var h = v.clientHeight;
       var pb = document.querySelector(".page-body");
-      pb.style.setProperty("height", `calc(100% - 5rem - ${h}px)`)
-    });
+      pb.style.setProperty("height", `calc(100% - 5rem - ${h}px)`);
+    }
   </script>
 </body>
 

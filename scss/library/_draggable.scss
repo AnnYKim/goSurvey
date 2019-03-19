@@ -1,9 +1,14 @@
+.StackedListItem {
+  outline: 0;
+  z-index: 999;
+}
+
 .StackedListContent {
   position: relative;
 }
 
 .StackedListItem--isDraggable.draggable-mirror .StackedListContent {
-  z-index: 999;
+  z-index: 9999;
   transform: scale(1.11);
   box-shadow: 0px 4px 30px rgba(158, 158, 158, 0.7);
   background: #f4f4f4;

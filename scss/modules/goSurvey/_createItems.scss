@@ -832,7 +832,7 @@
   // - 개인별로 투표대상자 설정할 때
   position: relative;
   padding: 1.6rem 1rem;
-  min-height: 32rem;
+  // min-height: 32rem;
   @include justify-content(flex-start);
 
   .search-container {
@@ -871,7 +871,7 @@
       }
 
       .dropdown-ui-searchResult {
-        z-index: 1;
+        z-index: 99991;
         position: relative;
         overflow-y: auto;
         height: auto;
@@ -1307,6 +1307,15 @@
   &+.page-body {
     padding-top: 19rem;
     height: calc(100% - 15.1rem);
+
+    .create-item-container {
+      background: #fff;
+      border-bottom: 1rem solid #f4f4f4;
+    }
+
+    .create-item:first-child {
+      margin-top: 0;
+    }
   }
 }
 
@@ -1320,6 +1329,10 @@
   padding-right: 1rem;
   border-top: 0;
   background-color: #fff;
+
+  .title {
+    background-color: #ddeff9;
+  }
 
   // &:before {
   //   position: absolute;

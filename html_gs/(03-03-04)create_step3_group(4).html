@@ -1,113 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <title>go survey</title>
 
-<head>
-  <title>go survey</title>
+    <link type="text/css" rel="stylesheet" href="../css/style.css" />
 
-  <link type="text/css" rel="stylesheet" href="../css/style.css" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+    />
+    <meta
+      name="format-detection"
+      content="telephone=no, address=no, email=no"
+    />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-  <meta name="format-detection" content="telephone=no, address=no, email=no" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
-  <script type="text/javascript" src="../js/test.js"></script>
-  <!--
+    <script type="text/javascript" src="../js/library/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../js/test.js"></script>
+    <!--
     [전달사항]
     이벤트 확인용 js입니다.
-  -->
-</head>
+  --></head>
 
-<body class="body-create">
-  <!-- 설문 생성 화면 (3단계) - 그룹 (소속이 기타일 때)-->
+  <body class="body-create">
+    <!-- 설문 생성 화면 (3단계) - 그룹 (소속이 대학일 때) -->
 
-  <div id="wrapper" class="create">
-    <div class="page-top">
-      <div class="page-header">
-        <div class="page-header-left">
-          <button class="icon-container">
-            <i class="icon icon-close"></i>
-          </button>
+    <div id="wrapper" class="create">
+      <div class="page-top">
+        <div class="page-header">
+          <div class="page-header-left">
+            <button class="icon-container">
+              <i class="icon icon-close"></i>
+            </button>
+          </div>
+          <h1 class="page-title">
+            설문 생성
+          </h1>
         </div>
-        <h1 class="page-title">
-          설문 생성
-        </h1>
-      </div>
 
-      <div class="create-process active-3">
-        <!--
+        <div class="create-process active-3">
+          <!--
           [전달사항] 활성화된 순서에 따라 create-process에
           active-1, active-2, active-3, active-4 클래스를 각각 추가해주세요.
         -->
-        <div class="process-level">
-          <span class="text">설문 정보 입력</span>
-        </div>
-        <div class="process-level">
-          <span class="text">설문 문항 작성</span>
-        </div>
-        <div class="process-level">
-          <span class="text">설문 대상 설정</span>
-        </div>
-        <div class="process-level">
-          <span class="text">작성 정보 확인</span>
+          <div class="process-level">
+            <span class="text">설문 정보 입력</span>
+          </div>
+          <div class="process-level">
+            <span class="text">설문 문항 작성</span>
+          </div>
+          <div class="process-level">
+            <span class="text">설문 대상 설정</span>
+          </div>
+          <div class="process-level">
+            <span class="text">작성 정보 확인</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="page-body">
-      <div class="create-item-container">
-        <div class="tabmenu create-target">
-          <button class="tabmenu-item active">그룹 선택</button>
-          <!-- [전달사항] 활성화 시, active 클래스 토글 부탁드립니다. -->
-          <button class="tabmenu-item">개별 선택</button>
-        </div>
+      <!-- [190319 수정] 마크업 위치 변경 -->
+      <div class="tabmenu create-target">
+        <button class="tabmenu-item active">그룹 선택</button>
+        <button class="tabmenu-item">개별 선택</button>
+      </div>
+      <!-- //[190319 수정] 마크업 위치 변경 -->
 
-        <ul class="create-item">
-          <li class="ly-padding-sm voters-selectGroup">
-            <div class="voters-setting">
-              <div class="title">
-                <p>소속</p>
-              </div>
-              <div class="body voters-radio-container">
-                <div class="block">
-                  <input type="radio" id="voters-group-undergraduate" name="voters-group" />
-                  <label for="voters-group-undergraduate">대학</label>
-                </div>
-                <div class="block">
-                  <input type="radio" id="voters-group-graduate" name="voters-group" />
-                  <label for="voters-group-graduate">대학원</label>
-                </div>
-                <div class="block">
-                  <input type="radio" id="voters-group-employees" name="voters-group" />
-                  <label for="voters-group-employees">교직원</label>
-                </div>
-                <div class="block">
-                  <input type="radio" id="voters-group-others" name="voters-group" checked />
-                  <label for="voters-group-others">기타</label>
-                </div>
-              </div>
-            </div>
-
-            <div class="voters-setting dropdown-area">
-              <div class="title">
-                <p>구분</p>
-                <input type="checkbox" id="voters-selectAll-category" class="selectAll" />
-                <label for="voters-selectAll-category">전체</label>
-              </div>
-              <div class="body voters-dropdown-container">
-                <div class="dropdown-content">
-                  <button class="button-dropdown">
-                    <p class="text">구분을 선택하세요.</p>
-                    <div class="icon-container">
-                      <i class="icon icon-dropdown"></i>
+      <div class="page-body">
+        <div class="create-item-container">
+          <!-- [190319 추가] scrollArea 영역 -->
+          <div class="scrollArea">
+            <ul class="create-item">
+              <li class="ly-padding-sm voters-selectGroup">
+                <div class="voters-setting">
+                  <div class="title">
+                    <p>소속</p>
+                  </div>
+                  <div class="body voters-radio-container">
+                    <div class="block">
+                      <input
+                        type="radio"
+                        id="voters-group-undergraduate"
+                        name="voters-group"
+                      />
+                      <label for="voters-group-undergraduate">대학</label>
                     </div>
-                  </button>
-                  <div class="voters-list-container">
-                    <!-- [전달사항] 선택 시 아래와 같이 추가해주세요. -->
-                    <!--
+                    <div class="block">
+                      <input
+                        type="radio"
+                        id="voters-group-graduate"
+                        name="voters-group"
+                      />
+                      <label for="voters-group-graduate">대학원</label>
+                    </div>
+                    <div class="block">
+                      <input
+                        type="radio"
+                        id="voters-group-employees"
+                        name="voters-group"
+                      />
+                      <label for="voters-group-employees">교직원</label>
+                    </div>
+                    <div class="block">
+                      <input
+                        type="radio"
+                        id="voters-group-others"
+                        name="voters-group"
+                        checked
+                      />
+                      <label for="voters-group-others">기타</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="voters-setting dropdown-area">
+                  <div class="title">
+                    <p>구분</p>
+                    <input
+                      type="checkbox"
+                      id="voters-selectAll-category"
+                      class="selectAll"
+                    />
+                    <label for="voters-selectAll-category">전체</label>
+                  </div>
+                  <div class="body voters-dropdown-container">
+                    <div class="dropdown-content">
+                      <button class="button-dropdown">
+                        <p class="text">구분을 선택하세요.</p>
+                        <div class="icon-container">
+                          <i class="icon icon-dropdown"></i>
+                        </div>
+                      </button>
+                      <div class="voters-list-container">
+                        <!-- [전달사항] 선택 시 아래와 같이 추가해주세요. -->
+                        <!--
                     <div class="voters-list">
                       <p class="text">인문사회학부</p>
                       <button class="voters-list-delete"></button>
@@ -121,58 +149,74 @@
                       <button class="voters-list-delete"></button>
                     </div>
                     -->
+                      </div>
+                    </div>
+                    <ul class="dropdown-ui-department">
+                      <li class="dropdown-item"><button>구분11</button></li>
+                      <li class="dropdown-item"><button>구분22</button></li>
+                      <li class="dropdown-item"><button>구분11</button></li>
+                      <li class="dropdown-item"><button>구분22</button></li>
+                      <li class="dropdown-item"><button>구분11</button></li>
+                      <li class="dropdown-item"><button>구분22</button></li>
+                    </ul>
+                    <!--
+                    [전달사항] .voters-dropdown-container에 active 클래스가 추가되면 화면에 보입니다.
+                  --></div>
+                </div>
+
+                <div class="voters-setting">
+                  <div class="title">
+                    <p>성별</p>
+                    <input
+                      type="checkbox"
+                      id="voters-selectAll-gender"
+                      class="selectAll"
+                      checked
+                    />
+                    <label for="voters-selectAll-gender">전체</label>
+                    <!-- [전달사항] .selectAll이 checked됐을 때 파란색으로 바뀝니다. -->
+                  </div>
+                  <div class="body voters-checkbox-container">
+                    <div class="checkbox-block">
+                      <input
+                        id="voters-gender-male"
+                        type="checkbox"
+                        class="checkbox-style01"
+                        checked
+                      />
+                      <label for="voters-gender-male">남자</label>
+                    </div>
+                    <div class="checkbox-block">
+                      <input
+                        id="voters-gender-female"
+                        type="checkbox"
+                        class="checkbox-style01"
+                        checked
+                      />
+                      <label for="voters-gender-female">여자</label>
+                    </div>
                   </div>
                 </div>
-                <ul class="dropdown-ui-department">
-                  <li class="dropdown-item"><button>구분11</button></li>
-                  <li class="dropdown-item"><button>구분22</button></li>
-                  <li class="dropdown-item"><button>구분11</button></li>
-                  <li class="dropdown-item"><button>구분22</button></li>
-                  <li class="dropdown-item"><button>구분11</button></li>
-                  <li class="dropdown-item"><button>구분22</button></li>
-                </ul>
-                <!--
-                    [전달사항] .voters-dropdown-container에 active 클래스가 추가되면 화면에 보입니다.
-                  -->
-              </div>
-            </div>
 
-            <div class="voters-setting">
-              <div class="title">
-                <p>성별</p>
-                <input type="checkbox" id="voters-selectAll-gender" class="selectAll" checked />
-                <label for="voters-selectAll-gender">전체</label>
-                <!-- [전달사항] .selectAll이 checked됐을 때 파란색으로 바뀝니다. -->
-              </div>
-              <div class="body voters-checkbox-container">
-                <div class="checkbox-block">
-                  <input id="voters-gender-male" type="checkbox" class="checkbox-style01" checked />
-                  <label for="voters-gender-male">남자</label>
-                </div>
-                <div class="checkbox-block">
-                  <input id="voters-gender-female" type="checkbox" class="checkbox-style01" checked />
-                  <label for="voters-gender-female">여자</label>
-                </div>
-              </div>
-            </div>
-
-            <button class="button-select-done">선택 완료</button>
-          </li>
-          <li class="voters-targetList">
-            <div class="voters-setting">
-              <div class="title">
-                <p>설문 대상</p>
-              </div>
-              <div class="body voters-targetList-container init">
-                <!--
+                <button class="button-select-done">선택 완료</button>
+              </li>
+              <li class="voters-targetList">
+                <div class="voters-setting">
+                  <div class="title">
+                    <p>설문 대상</p>
+                  </div>
+                  <div class="body voters-targetList-container init">
+                    <!--
                   [전달사항] 설문 대상이 1개라도 있으면, .voters-targetList-container로부터 init 클래스를 제거해주세요.
                 -->
-                <div class="init-text">설문 대상을 위에서 선택해주세요.</div>
-                <div class="voters-list-container">
-                  <!--
+                    <div class="init-text">
+                      설문 대상을 위에서 선택해주세요.
+                    </div>
+                    <div class="voters-list-container">
+                      <!--
                     [전달사항] 설문 대상은 아래와 같이 추가해주세요.
                   -->
-                  <!--
+                      <!--
                   <div class="voters-list">
                     <p class="text">대학원/물리학과/전체</p>
                     <button class="voters-list-delete"></button>
@@ -186,19 +230,39 @@
                     <button class="voters-list-delete"></button>
                   </div>
                   -->
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <div class="create-buttons-container">
-          <button class="button-prev">이전</button>
-          <button class="button-next">다음</button>
+              </li>
+            </ul>
+          </div>
+          <!-- //[190319 추가] scrollArea 영역 -->
+          <div class="create-buttons-container">
+            <button class="button-prev">이전</button>
+            <button class="button-next">다음</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+    <script>
+      /* 
+      [190319 추가]
+      1) 화면 resize 시
+      2) 사용자가 chip을 제거/추가했을 시
+      위 두 상황에서 .page-body의 높이값을
+      calc(100% - 5rem - ${.voters-targetList의 현재높이})만큼
+      유동적으로 변경해주셔야 합니다.
 
+    */
+      var v = document.querySelector(".voters-targetList");
+      window.addEventListener("load", resizeH);
+      window.addEventListener("resize", resizeH);
+
+      function resizeH() {
+        var h = v.clientHeight;
+        var pb = document.querySelector(".page-body");
+        pb.style.setProperty("height", `calc(100% - 5rem - ${h}px)`);
+      }
+    </script>
+  </body>
 </html>
